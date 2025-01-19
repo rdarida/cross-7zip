@@ -1,0 +1,10 @@
+7zip
+coverage
+dist
+docs
+tests/data
+
+package-lock.json
+tsconfig.json
+
+*.md

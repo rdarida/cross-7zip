@@ -1,0 +1,20 @@
+{
+  "description": "A CLI tool for compressing and extracting files using 7-Zip.",
+  "demandMsg": "You need to specify a command: zip or unzip",
+  "zip": {
+    "description": "Compresses multiple files into a zipped file.",
+    "example": "Creates a new 7z archive named \"dest.7z\" containing \"file1\", \"file2.txt\", and the contents of the \"folder\" directory.",
+    "args": {
+      "paths": "Specifies the paths to the files to add to the zipped file",
+      "destination": "Specifies the path to the output zipped file"
+    }
+  },
+  "unzip": {
+    "description": "Extracts files from a specified zipped file.",
+    "example": "Extracts the contents of the \"archive.7z\" archive into the \"destination\" directory. If the directory does not exist, it will be created.",
+    "args": {
+      "archive": "Specifies the path to the zipped file",
+      "destination": "Specifies the path to the output directory"
+    }
+  }
+}
