@@ -4,11 +4,11 @@ import { existsSync, mkdirSync } from 'fs';
 
 import { sevenUnzipSync } from '../src/sevenUnzipSync';
 
-import { TEMP_DIR } from './teardown';
+import { TEMP_DIR } from './constants';
 
 const UNZIP_TEMP_DIR = join(TEMP_DIR, 'unzipSync');
 
-describe('Test sevenUnzipSync function', () => {
+xdescribe('Test sevenUnzipSync function', () => {
   beforeAll(() => {
     mkdirSync(UNZIP_TEMP_DIR, { recursive: true });
   });

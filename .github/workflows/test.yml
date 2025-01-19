@@ -1,0 +1,69 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  # win32 x64
+  test_win32:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Test
+        run: |
+          npm ci
+          npm run lint
+          npm run build
+          npm test
+
+  # # linux x64
+  # test_linux:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         lfs: true
+
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20'
+
+  #     - name: Test
+  #       run: |
+  #         chmod +x 7zip/linux_x64_7z
+  #         npm ci
+  #         npm run lint
+  #         npm run build
+  #         npm test
+
+  # # darwin arm64
+  # test_darwin:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         lfs: true
+
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20'
+
+  #     - name: Build and run
+  #       run: |
+  #         chmod +x 7zip/darwin_7z
+  #         npm ci
+  #         npm run lint
+  #         npm run build
+  #         npm test

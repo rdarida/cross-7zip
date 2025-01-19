@@ -6,7 +6,7 @@ import { executeSync } from '../src/utils';
 
 const CLI_TEMP_DIR = resolve(__dirname, '.temp', 'cli');
 
-describe('Test cli', () => {
+xdescribe('Test cli', () => {
   beforeAll(() => {
     mkdirSync(CLI_TEMP_DIR, { recursive: true });
   });

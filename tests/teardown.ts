@@ -1,8 +1,7 @@
-import { resolve } from 'path';
 import { rimrafSync } from 'rimraf';
 
-export const TEMP_DIR = resolve(__dirname, '.temp');
+import { TEMP_DIR } from './constants';
 
-export default function afterAll(): void {
+export default function globalTeardown(): void {
   rimrafSync(TEMP_DIR);
 }

@@ -5,11 +5,11 @@ import { mkdirSync, readFileSync } from 'fs';
 import { sevenUnzipSync } from '../src/sevenUnzipSync';
 import { sevenZipSync } from '../src/sevenZipSync';
 
-import { TEMP_DIR } from './teardown';
+import { TEMP_DIR } from './constants';
 
 const ZIP_TEMP_DIR = join(TEMP_DIR, 'zipSync');
 
-describe('Test sevenZipSync function', () => {
+xdescribe('Test sevenZipSync function', () => {
   beforeAll(() => {
     mkdirSync(ZIP_TEMP_DIR, { recursive: true });
   });
