@@ -20,6 +20,6 @@ export default function globalSetup(): void {
 
   if (which('7z')) {
     exec('7z a "test zip.7z"', { cwd: TEMP_DIR });
-    ls([TEMP_DIR]);
+    exec('7z l "test zip.7z"', { cwd: TEMP_DIR });
   }
 }
