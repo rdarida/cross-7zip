@@ -1,4 +1,4 @@
-import { join, resolve } from 'path';
+import { join } from 'path';
 import { rimrafSync } from 'rimraf';
 import { existsSync, mkdirSync } from 'fs';
 
