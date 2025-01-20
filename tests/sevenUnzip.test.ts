@@ -4,21 +4,20 @@ import { existsSync, mkdirSync } from 'fs';
 
 import { sevenUnzip } from '../src/sevenUnzip';
 
-import { TEMP_DIR } from './constants';
+import { TEMP_DIR, ZIP_PATH } from './constants';
 
 const UNZIP_TEMP_DIR = join(TEMP_DIR, 'unzip');
 
-xdescribe('Test sevenUnzip function', () => {
+describe('Test sevenUnzip function', () => {
   beforeAll(() => {
     mkdirSync(UNZIP_TEMP_DIR, { recursive: true });
   });
 
   test('extracts files from a 7z archive and verifies their existence', async () => {
-    const archive = resolve('tests', 'data', `test ${process.platform}.7z`);
+    const archive = resolve(ZIP_PATH);
     await sevenUnzip(archive, UNZIP_TEMP_DIR);
 
     [
-      'inner folder',
       'inner folder/inner test 1.md',
       'inner folder/inner test 2.md',
       'test 1.txt',
