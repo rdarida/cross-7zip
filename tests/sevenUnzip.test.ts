@@ -18,10 +18,10 @@ describe('Test sevenUnzip function', () => {
     await sevenUnzip(archive, UNZIP_TEMP_DIR);
 
     [
-      'inner folder/inner test 1.md',
-      'inner folder/inner test 2.md',
-      'test 1.txt',
-      'test 2.txt'
+      'test file 1.txt',
+      'test file 2.md',
+      'inner dir/test file 3.txt',
+      'inner dir/test file 4.md'
     ]
       .map(file => join(UNZIP_TEMP_DIR, file))
       .forEach(path => {
