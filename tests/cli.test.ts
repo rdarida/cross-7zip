@@ -1,10 +1,11 @@
-import { join, resolve } from 'path';
+import { join } from 'path';
 import { rimrafSync } from 'rimraf';
 import { existsSync, mkdirSync, readFileSync } from 'fs';
 
+import { ZIP_PATH } from './constants';
 import { executeSync } from '../src/utils';
 
-const CLI_TEMP_DIR = resolve(__dirname, '.temp', 'cli');
+const CLI_TEMP_DIR = join(__dirname, '.temp', 'cli');
 
 xdescribe('Test cli', () => {
   beforeAll(() => {
@@ -12,20 +13,19 @@ xdescribe('Test cli', () => {
   });
 
   test('unzips and recompresses files using CLI commands', () => {
-    const archive = resolve('tests', 'data', `test ${process.platform}.7z`);
-    executeSync('node', ['dist/cli.js', 'unzip', archive, CLI_TEMP_DIR]);
+    executeSync('node', ['dist/cli.js', 'unzip', ZIP_PATH, CLI_TEMP_DIR]);
 
-    const paths = ['inner folder', 'test 1.txt', 'test 2.txt'].map(file =>
+    const paths = ['inner dir', 'test file 1.txt', 'test file 2.md'].map(file =>
       join(CLI_TEMP_DIR, file)
     );
 
     paths.forEach(path => expect(existsSync(path)).toBeTruthy());
 
-    const destination = join(CLI_TEMP_DIR, `test ${process.platform}.7z`);
+    const destination = join(CLI_TEMP_DIR, 'test zip.7z');
     executeSync('node', ['dist/cli.js', 'zip', destination, ...paths]);
 
     const actual = readFileSync(destination);
-    const expected = readFileSync(archive);
+    const expected = readFileSync(ZIP_PATH);
     expect(actual).toEqual(expected);
   });
 
