@@ -14,8 +14,7 @@ describe('Test sevenUnzip function', () => {
   });
 
   test('extracts files from a 7z archive and verifies their existence', async () => {
-    const archive = resolve(ZIP_PATH);
-    await sevenUnzip(archive, UNZIP_TEMP_DIR);
+    await sevenUnzip(ZIP_PATH, UNZIP_TEMP_DIR);
 
     [
       'test file 1.txt',
