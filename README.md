@@ -21,6 +21,26 @@
 </p>
 <hr>
 
+## Installation
+
+To install the `cross-7zip` package, use npm
+
+```bash
+npm install cross-7zip
+```
+
+or yarn
+
+```bash
+yarn add cross-7zip
+```
+
+## Documentation
+
+For additional documentation and examples, visit the
+[official documentation](https://rdarida.github.io/cross-7zip/).
+
+
 <details>
   <summary>
     <strong>Resources</strong>
