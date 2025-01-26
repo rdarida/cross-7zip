@@ -40,8 +40,6 @@ Using pnpm:
 pnpm add cross-7zip
 ```
 
-<hr>
-
 ## API
 
 ### `sevenZip(paths: string[], destination: string): Promise<void>`
@@ -56,12 +54,9 @@ Extracts files from a specified zipped file **asynchronously**.
 ### `sevenUnzipSync(archive: string, destination: string): void`
 Extracts files from a specified zipped file **synchronously**.
 
-<hr>
-
 ## Documentation
 
-For additional documentation and examples, visit the
-[official documentation](https://rdarida.github.io/cross-7zip/).
+See documentation [here](https://rdarida.github.io/cross-7zip/).
 
 <hr>
 
