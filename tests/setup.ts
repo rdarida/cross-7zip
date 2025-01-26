@@ -1,15 +1,11 @@
 import { join } from 'path';
-import { existsSync, mkdirSync, rmSync, writeFileSync } from 'fs';
+import { mkdirSync, writeFileSync } from 'fs';
 import { EOL } from 'os';
 import { exec, which } from 'shelljs';
 
 import { FILE_PATHS, SEVEN, TEMP_DIR } from './constants';
 
 export default function globalSetup(): void {
-  if (existsSync(TEMP_DIR)) {
-    rmSync(TEMP_DIR, { recursive: true, force: true });
-  }
-
   const innerDir = join(TEMP_DIR, 'inner dir');
   mkdirSync(innerDir, { recursive: true });
 
