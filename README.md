@@ -61,7 +61,7 @@ For additional documentation and examples, visit the
 
 <details>
   <summary>
-    <strong>Resources</strong>
+    <h2>Resources</h2>
   </summary>
 
 - [7-Zip](https://www.7-zip.org/)
