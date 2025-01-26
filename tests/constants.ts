@@ -1,7 +1,5 @@
 import { join } from 'path';
 
-import { getSevenZipPath } from '../src/index';
-
 export const TEMP_DIR = join(__dirname, '.temp');
 
 export const FILE_PATHS = [
@@ -12,5 +10,3 @@ export const FILE_PATHS = [
 ].map(fileName => join(TEMP_DIR, fileName));
 
 export const ZIP_PATH = join(TEMP_DIR, 'test zip.7z');
-
-export const SEVEN = getSevenZipPath() || '7z';
