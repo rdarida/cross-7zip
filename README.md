@@ -62,7 +62,7 @@ See documentation [here](https://rdarida.github.io/cross-7zip/).
 
 <details>
   <summary>
-    <strong>Resources<strong>
+    <strong>Other Resources<strong>
   </summary>
 
 - [7-Zip](https://www.7-zip.org/)
