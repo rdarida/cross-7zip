@@ -1,6 +1,6 @@
 import { join } from 'path';
 
-import { getSevenZipPath } from '../src';
+import { getSevenZipPath } from '../src/index';
 
 export const TEMP_DIR = join(__dirname, '.temp');
 
