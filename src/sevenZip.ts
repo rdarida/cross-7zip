@@ -1,5 +1,4 @@
-import { execute } from './utils';
-import { getSevenZipPath } from './getSevenZipPath';
+import { execute, getSevenZipPath } from './utils';
 
 /**
  * Compresses multiple files into a zipped file **asynchronously**.

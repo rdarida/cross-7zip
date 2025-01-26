@@ -1,7 +1,7 @@
-import { rmSync } from 'fs';
+import { rimrafSync } from 'rimraf';
 
 import { TEMP_DIR } from './constants';
 
 export default function globalTeardown(): void {
-  rmSync(TEMP_DIR, { recursive: true, force: true });
+  rimrafSync(TEMP_DIR);
 }

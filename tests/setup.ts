@@ -4,7 +4,7 @@ import { EOL } from 'os';
 import { exec, which } from 'shelljs';
 
 import { FILE_PATHS, TEMP_DIR } from './constants';
-import { getSevenZipPath } from '../src/index';
+import { getSevenZipPath } from '../src/utils';
 
 export default function globalSetup(): void {
   const innerDir = join(TEMP_DIR, 'inner dir');

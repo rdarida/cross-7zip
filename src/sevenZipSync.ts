@@ -1,5 +1,4 @@
-import { executeSync } from './utils';
-import { getSevenZipPath } from './getSevenZipPath';
+import { executeSync, getSevenZipPath } from './utils';
 
 /**
  * Compresses multiple files into a zipped file **synchronously**.

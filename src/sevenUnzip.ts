@@ -1,5 +1,4 @@
-import { execute } from './utils';
-import { getSevenZipPath } from './getSevenZipPath';
+import { execute, getSevenZipPath } from './utils';
 
 /**
  * Extracts files from a specified zipped file **asynchronously**.

@@ -2,6 +2,7 @@ import { join } from 'path';
 import { rimrafSync } from 'rimraf';
 import { existsSync, mkdirSync } from 'fs';
 
+import * as utils from '../src/utils';
 import { sevenUnzip } from '../src/sevenUnzip';
 
 import { TEMP_DIR, ZIP_PATH } from './constants';
@@ -26,6 +27,18 @@ describe('Test sevenUnzip function', () => {
       .forEach(path => {
         expect(existsSync(path)).toBeTruthy();
       });
+  });
+
+  test('throws an error if 7-Zip executable is not found', async () => {
+    jest.spyOn(utils, 'getSevenZipPath').mockReturnValue(undefined);
+
+    await expect(sevenUnzip(ZIP_PATH, UNZIP_TEMP_DIR)).rejects.toThrow(
+      '7-Zip executable not found.'
+    );
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 
   afterAll(() => {

@@ -1,5 +1,4 @@
 import {
-  getSevenZipPath,
   sevenUnzip,
   sevenUnzipSync,
   sevenZip,
@@ -7,10 +6,6 @@ import {
 } from '../src/index';
 
 describe('Test export', () => {
-  test('getSevenZipPath should be truthy', () => {
-    expect(getSevenZipPath).toBeTruthy();
-  });
-
   test('sevenUnzip should be truthy', () => {
     expect(sevenUnzip).toBeTruthy();
   });
