@@ -10,7 +10,6 @@ import { execute, getSevenZipPath } from './utils';
  * @throws {Error} Will throw an error if the 7-Zip executable is not found.
  *
  * @example
- * // Example usage:
  * import { sevenZip } from 'cross-7zip';
  *
  * async function createArchive() {
