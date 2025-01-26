@@ -8,6 +8,22 @@ import { execute, getSevenZipPath } from './utils';
  * @param destination Specifies the path to the output zipped file.
  *
  * @throws {Error} Will throw an error if the 7-Zip executable is not found.
+ *
+ * @example
+ * // Example usage:
+ * import { sevenZip } from 'cross-7zip';
+ *
+ * async function createArchive() {
+ *   try {
+ *     const paths = ['document.txt', 'image.png', 'folder'];
+ *     const destination = 'example.7z';
+ *
+ *     await sevenZip(paths, destination);
+ *     console.log('Archive created successfully.');
+ *   } catch (error) {
+ *     console.error('An error occurred during compression:', error);
+ *   }
+ * }
  */
 export async function sevenZip(
   paths: string[],

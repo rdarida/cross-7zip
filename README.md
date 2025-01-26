@@ -44,19 +44,19 @@ pnpm add cross-7zip
 
 ### `sevenUnzip`
 Extracts files from a specified zipped file **asynchronously**.
-[Example](https://rdarida.github.io/cross-7zip/functions/sevenUnzip.html)
+[Example](https://rdarida.github.io/cross-7zip/functions/sevenUnzip.html#example)
 
 ### `sevenUnzipSync`
 Extracts files from a specified zipped file **synchronously**.
-[Example](https://rdarida.github.io/cross-7zip/functions/sevenUnzipSync.html)
+[Example](https://rdarida.github.io/cross-7zip/functions/sevenUnzipSync.html#example)
 
 ### `sevenZip`
 Compresses multiple files into a zipped file **asynchronously**.
-[Example](https://rdarida.github.io/cross-7zip/functions/sevenZip.html)
+[Example](https://rdarida.github.io/cross-7zip/functions/sevenZip.html#example)
 
 ### `sevenZipSync`
 Compresses multiple files into a zipped file **synchronously**.
-[Example](https://rdarida.github.io/cross-7zip/functions/sevenZipSync.html)
+[Example](https://rdarida.github.io/cross-7zip/functions/sevenZipSync.html#example)
 
 ## Documentation
 
