@@ -23,23 +23,41 @@
 
 ## Installation
 
-To install the `cross-7zip` package, use npm
+### Package manager
 
+Using npm:
 ```bash
 npm install cross-7zip
 ```
 
-or yarn
-
+Using yarn:
 ```bash
 yarn add cross-7zip
 ```
+
+Using pnpm:
+```bash
+pnpm add cross-7zip
+```
+
+## API
+
+### `sevenZip`
+Compresses multiple files into a zipped file **asynchronously**.
+
+### `sevenZipSync`
+Compresses multiple files into a zipped file **synchronously**.
+
+### `sevenUnzip`
+Extracts files from a specified zipped file **asynchronously**.
+
+### `sevenUnzipSync`
+Extracts files from a specified zipped file **synchronously**.
 
 ## Documentation
 
 For additional documentation and examples, visit the
 [official documentation](https://rdarida.github.io/cross-7zip/).
-
 
 <details>
   <summary>
