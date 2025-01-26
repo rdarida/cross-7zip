@@ -42,17 +42,13 @@ pnpm add cross-7zip
 
 ## API
 
-### `sevenZip(paths: string[], destination: string): Promise<void>`
-Compresses multiple files into a zipped file **asynchronously**.
+- `sevenUnzip`: Extracts files from a specified zipped file **asynchronously**.
 
-### `sevenZipSync(paths: string[], destination: string): void`
-Compresses multiple files into a zipped file **synchronously**.
+- `sevenUnzipSync`: Extracts files from a specified zipped file **synchronously**.
 
-### `sevenUnzip(archive: string, destination: string): Promise<void>`
-Extracts files from a specified zipped file **asynchronously**.
+- `sevenZip`: Compresses multiple files into a zipped file **asynchronously**.
 
-### `sevenUnzipSync(archive: string, destination: string): void`
-Extracts files from a specified zipped file **synchronously**.
+- `sevenZipSync`: Compresses multiple files into a zipped file **synchronously**.
 
 ## Documentation
 
