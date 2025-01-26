@@ -40,28 +40,34 @@ Using pnpm:
 pnpm add cross-7zip
 ```
 
+<hr>
+
 ## API
 
-### `sevenZip`
+### `sevenZip(paths: string[], destination: string): Promise<void>`
 Compresses multiple files into a zipped file **asynchronously**.
 
-### `sevenZipSync`
+### `sevenZipSync(paths: string[], destination: string): void`
 Compresses multiple files into a zipped file **synchronously**.
 
-### `sevenUnzip`
+### `sevenUnzip(archive: string, destination: string): Promise<void>`
 Extracts files from a specified zipped file **asynchronously**.
 
-### `sevenUnzipSync`
+### `sevenUnzipSync(archive: string, destination: string): void`
 Extracts files from a specified zipped file **synchronously**.
+
+<hr>
 
 ## Documentation
 
 For additional documentation and examples, visit the
 [official documentation](https://rdarida.github.io/cross-7zip/).
 
+<hr>
+
 <details>
   <summary>
-    <h2>Resources</h2>
+    <strong>Resources<strong>
   </summary>
 
 - [7-Zip](https://www.7-zip.org/)
