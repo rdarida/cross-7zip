@@ -42,9 +42,8 @@ pnpm add cross-7zip
 
 ## API
 
-- `sevenUnzip`
+- [sevenUnzip](https://rdarida.github.io/cross-7zip/functions/sevenUnzip.html)
   Extracts files from a specified zipped file **asynchronously**.
-  [Example](https://rdarida.github.io/cross-7zip/functions/sevenUnzip.html)
 
 - `sevenUnzipSync`: Extracts files from a specified zipped file **synchronously**.
 
