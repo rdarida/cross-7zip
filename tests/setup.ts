@@ -1,7 +1,7 @@
 import { join } from 'path';
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'fs';
 import { EOL } from 'os';
-import { exec, ls, which } from 'shelljs';
+import { exec, which } from 'shelljs';
 
 import { FILE_PATHS, TEMP_DIR } from './constants';
 
