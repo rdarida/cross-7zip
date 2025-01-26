@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, rmSync, writeFileSync } from 'fs';
 import { EOL } from 'os';
 import { exec, which } from 'shelljs';
 
-import { FILE_PATHS, TEMP_DIR } from './constants';
+import { FILE_PATHS, SEVEN, TEMP_DIR } from './constants';
 
 export default function globalSetup(): void {
   if (existsSync(TEMP_DIR)) {
@@ -18,8 +18,8 @@ export default function globalSetup(): void {
     writeFileSync(path, content);
   });
 
-  if (which('7z')) {
-    exec('7z a "test zip.7z"', { cwd: TEMP_DIR });
-    exec('7z l "test zip.7z"', { cwd: TEMP_DIR });
+  if (which(SEVEN)) {
+    exec(`${SEVEN} a "test zip.7z"`, { cwd: TEMP_DIR });
+    exec(`${SEVEN} l "test zip.7z"`, { cwd: TEMP_DIR });
   }
 }
