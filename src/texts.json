@@ -7,7 +7,8 @@
     "args": {
       "files": "Specifies the paths to the files to add to the zipped file",
       "destination": "Specifies the path to the output zipped file",
-      "level": "Compression level (1-9)"
+      "level": "Compression level (1-9)",
+      "password": "Password for the archive"
     }
   },
   "unzip": {
@@ -15,7 +16,8 @@
     "example": "Extracts the contents of the \"archive.7z\" archive into the \"destination\" directory. If the directory does not exist, it will be created.",
     "args": {
       "archive": "Specifies the path to the zipped file",
-      "destination": "Specifies the path to the output directory"
+      "destination": "Specifies the path to the output directory",
+      "password": "Password for the archive"
     }
   }
 }

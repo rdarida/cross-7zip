@@ -7,6 +7,10 @@ export type UnzipOptions = {
    * Specifies the path to the output directory.
    */
   destination: string;
+  /**
+   * Password for the archive.
+   */
+  password?: string;
 };
 
 export type ZipOptions = {
@@ -22,4 +26,8 @@ export type ZipOptions = {
    * Compression level (1-9)
    */
   level?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+  /**
+   * Password for the archive.
+   */
+  password?: string;
 };

@@ -22,6 +22,11 @@ yargs
         .positional('destination', {
           describe: texts.unzip.args.destination,
           type: 'string'
+        })
+        .option('password', {
+          alias: 'p',
+          describe: texts.unzip.args.password,
+          type: 'string'
         });
     },
     args => {
@@ -60,6 +65,11 @@ yargs
           type: 'number',
           choices: [1, 2, 3, 4, 5, 6, 7, 8, 9],
           default: 5
+        })
+        .option('password', {
+          alias: 'p',
+          describe: texts.zip.args.password,
+          type: 'string'
         });
     },
     args => {

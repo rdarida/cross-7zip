@@ -10,3 +10,5 @@ export const FILE_PATHS = [
 ].map(fileName => join(TEMP_DIR, fileName));
 
 export const ZIP_PATH = join(TEMP_DIR, 'test zip.7z');
+
+export const TEST_PASSWORD = 'yxASqw12';

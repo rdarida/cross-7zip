@@ -37,11 +37,15 @@ export async function sevenZip(options: ZipOptions): Promise<void> {
     throw new Error('7-Zip executable not found.');
   }
 
-  const { destination, files, level } = options;
+  const { destination, files, level, password } = options;
   const args = ['a', destination, ...files];
 
   if (level) {
     args.push(`-mx${level}`);
+  }
+
+  if (password) {
+    args.push(`-p"${password}"`);
   }
 
   return execute(command, args);
