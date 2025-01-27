@@ -2,18 +2,13 @@
 import yargs from 'yargs';
 
 import texts from './texts.json';
-import { UnzipOptions, sevenZipSync, sevenUnzipSync } from '.';
-
-type ZipArgs = {
-  destination: string;
-  paths: string[];
-};
+import { ZipOptions, UnzipOptions, sevenZipSync, sevenUnzipSync } from '.';
 
 yargs
   .scriptName('seven')
   .usage('$0 <cmd> [args]', texts.description)
   .demandCommand(1, texts.demandMsg)
-  .command<ZipArgs>(
+  .command<ZipOptions>(
     'zip <destination> <paths...>',
     texts.zip.description,
     yargs => {
@@ -33,7 +28,7 @@ yargs
     },
     args => {
       try {
-        sevenZipSync(args.paths, args.destination);
+        sevenZipSync(args);
       } catch (e: any) {
         console.error(e);
       }

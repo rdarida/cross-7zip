@@ -13,12 +13,12 @@ import { executeSync, getSevenZipPath } from './utils';
  *
  * function extractFiles() {
  *   try {
- *     const options: UnzipOptions = {
+ *     const unzipOptions: UnzipOptions = {
  *       archive: 'example.7z',
  *       destination: './output'
  *     };
  *
- *     sevenUnzipSync(options);
+ *     sevenUnzipSync(unzipOptions);
  *     console.log('Extraction completed successfully.');
  *   } catch (error) {
  *     console.error('An error occurred during extraction:', error);

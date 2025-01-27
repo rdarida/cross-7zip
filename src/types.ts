@@ -8,3 +8,14 @@ export type UnzipOptions = {
    */
   destination: string;
 };
+
+export type ZipOptions = {
+  /**
+   * Specifies the path to the output zipped file.
+   */
+  destination: string;
+  /**
+   * Specifies the paths to the files to add to the zipped file.
+   */
+  paths: string[];
+};

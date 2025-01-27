@@ -24,12 +24,13 @@ describe('Test sevenZip function', () => {
 
     await sevenUnzip(unzipOptions);
 
+    const destination = join(ZIP_TEMP_DIR, 'test zip.7z');
+
     const paths = ['inner dir', 'test file 1.txt', 'test file 2.md'].map(file =>
       join(ZIP_TEMP_DIR, file)
     );
 
-    const destination = join(ZIP_TEMP_DIR, 'test zip.7z');
-    await sevenZip(paths, destination);
+    await sevenZip({ destination, paths });
 
     const actual = readFileSync(destination);
     const expected = readFileSync(ZIP_PATH);
@@ -39,13 +40,13 @@ describe('Test sevenZip function', () => {
   test('throws an error if 7-Zip executable is not found', async () => {
     jest.spyOn(utils, 'getSevenZipPath').mockReturnValue(undefined);
 
+    const destination = join(ZIP_TEMP_DIR, 'test zip.7z');
+
     const paths = ['inner dir', 'test file 1.txt', 'test file 2.md'].map(file =>
       join(ZIP_TEMP_DIR, file)
     );
 
-    const destination = join(ZIP_TEMP_DIR, 'test zip.7z');
-
-    await expect(sevenZip(paths, destination)).rejects.toThrow(
+    await expect(sevenZip({ destination, paths })).rejects.toThrow(
       '7-Zip executable not found.'
     );
   });
