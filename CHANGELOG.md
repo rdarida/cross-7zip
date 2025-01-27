@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.0.24 (2025-01-27)
+
+
+### Features
+
+* hide the header of the password protected zip file ([b2c4c4c](https://github.com/rdarida/cross-7zip/commit/b2c4c4ccbed47353f91a4c454705d3f82a1aa299))
+
 ### 0.0.23 (2025-01-27)
 
 ### 0.0.22 (2025-01-27)
