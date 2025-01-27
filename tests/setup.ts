@@ -15,6 +15,6 @@ export default function globalSetup(): void {
     writeFileSync(path, content);
   });
 
-  const seven = which('7z') || getSevenZipPath();
+  const seven = /*which('7z') ||*/ getSevenZipPath();
   exec(`${seven} a -mx1 "test zip.7z"`, { cwd: TEMP_DIR });
 }
