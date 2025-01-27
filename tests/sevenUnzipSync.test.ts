@@ -2,7 +2,6 @@ import { join } from 'path';
 import { rimrafSync } from 'rimraf';
 import { existsSync, mkdirSync } from 'fs';
 
-import { UnzipOptions } from '../src/types';
 import * as utils from '../src/utils';
 import { sevenUnzipSync } from '../src/sevenUnzipSync';
 
@@ -15,13 +14,11 @@ describe('Test sevenUnzipSync function', () => {
     mkdirSync(UNZIP_TEMP_DIR, { recursive: true });
   });
 
-  test('extracts files from a 7z archive and verifies their existence', () => {
-    const options: UnzipOptions = {
+  test('extracts files from a 7z archive', () => {
+    sevenUnzipSync({
       archive: TEST_ZIP,
       destination: UNZIP_TEMP_DIR
-    };
-
-    sevenUnzipSync(options);
+    });
 
     [
       'test file 1.txt',
@@ -38,12 +35,7 @@ describe('Test sevenUnzipSync function', () => {
   test('throws an error if 7-Zip executable is not found', () => {
     jest.spyOn(utils, 'getSevenZipPath').mockReturnValue(undefined);
 
-    const options: UnzipOptions = {
-      archive: TEST_ZIP,
-      destination: UNZIP_TEMP_DIR
-    };
-
-    expect(() => sevenUnzipSync(options)).toThrow(
+    expect(() => sevenUnzipSync({ archive: '', destination: '' })).toThrow(
       '7-Zip executable not found.'
     );
   });

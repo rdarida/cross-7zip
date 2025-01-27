@@ -4,7 +4,7 @@ import { existsSync, mkdirSync, readFileSync } from 'fs';
 
 import { executeSync } from '../src/utils';
 
-import { TEST_ZIP } from './constants';
+import { TEST_FILES, TEST_ZIP } from './constants';
 
 const CLI_TEMP_DIR = join(__dirname, '.temp', 'cli');
 
@@ -13,22 +13,24 @@ describe('Test cli', () => {
     mkdirSync(CLI_TEMP_DIR, { recursive: true });
   });
 
-  test('unzips and recompresses files using CLI commands', () => {
+  test('should extract the contents of a ZIP file', () => {
     executeSync('node', ['dist/cli.js', 'unzip', TEST_ZIP, CLI_TEMP_DIR]);
-
-    const destination = join(CLI_TEMP_DIR, 'test zip.7z');
 
     const files = ['inner dir', 'test file 1.txt', 'test file 2.md'].map(file =>
       join(CLI_TEMP_DIR, file)
     );
 
     files.forEach(path => expect(existsSync(path)).toBeTruthy());
+  });
+
+  test('should create a ZIP file', () => {
+    const destination = join(CLI_TEMP_DIR, 'test zip.7z');
 
     executeSync('node', [
       'dist/cli.js',
       'zip',
       destination,
-      ...files,
+      ...TEST_FILES,
       '--level=1'
     ]);
 
