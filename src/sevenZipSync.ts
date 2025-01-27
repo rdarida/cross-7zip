@@ -46,6 +46,7 @@ export function sevenZipSync(options: ZipOptions): void {
 
   if (password) {
     args.push(`-p${password}`);
+    args.push('-mhe=on');
   }
 
   executeSync(command, args);
