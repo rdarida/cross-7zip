@@ -5,7 +5,7 @@
     "description": "Compresses multiple files into a zipped file.",
     "example": "Creates a new 7z archive named \"dest.7z\" containing \"file1\", \"file2.txt\", and the contents of the \"folder\" directory.",
     "args": {
-      "paths": "Specifies the paths to the files to add to the zipped file",
+      "files": "Specifies the paths to the files to add to the zipped file",
       "destination": "Specifies the path to the output zipped file"
     }
   },

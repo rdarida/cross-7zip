@@ -9,7 +9,7 @@ yargs
   .usage('$0 <cmd> [args]', texts.description)
   .demandCommand(1, texts.demandMsg)
   .command<ZipOptions>(
-    'zip <destination> <paths...>',
+    'zip <destination> <files...>',
     texts.zip.description,
     yargs => {
       return yargs
@@ -19,9 +19,9 @@ yargs
           describe: texts.zip.args.destination,
           type: 'string'
         })
-        .positional('paths', {
+        .positional('files', {
           demandOption: true,
-          describe: texts.zip.args.paths,
+          describe: texts.zip.args.files,
           type: 'string',
           array: true
         });

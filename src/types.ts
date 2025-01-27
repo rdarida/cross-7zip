@@ -17,5 +17,5 @@ export type ZipOptions = {
   /**
    * Specifies the paths to the files to add to the zipped file.
    */
-  paths: string[];
+  files: string[];
 };

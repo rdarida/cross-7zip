@@ -16,7 +16,7 @@ import { execute, getSevenZipPath } from './utils';
  *   try {
  *     const zipOptions: ZipOptions = {
  *       destination: 'example.7z',
- *       paths: ['document.txt', 'image.png', 'folder']
+ *       files: ['document.txt', 'image.png', 'folder']
  *     };
  *
  *     await sevenZip(zipOptions);
@@ -37,8 +37,8 @@ export async function sevenZip(options: ZipOptions): Promise<void> {
     throw new Error('7-Zip executable not found.');
   }
 
-  const { destination, paths } = options;
-  const args = ['a', destination, ...paths];
+  const { destination, files } = options;
+  const args = ['a', destination, ...files];
 
   return execute(command, args);
 }

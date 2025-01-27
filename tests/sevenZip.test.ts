@@ -26,11 +26,11 @@ describe('Test sevenZip function', () => {
 
     const destination = join(ZIP_TEMP_DIR, 'test zip.7z');
 
-    const paths = ['inner dir', 'test file 1.txt', 'test file 2.md'].map(file =>
+    const files = ['inner dir', 'test file 1.txt', 'test file 2.md'].map(file =>
       join(ZIP_TEMP_DIR, file)
     );
 
-    await sevenZip({ destination, paths });
+    await sevenZip({ destination, files });
 
     const actual = readFileSync(destination);
     const expected = readFileSync(ZIP_PATH);
@@ -42,11 +42,11 @@ describe('Test sevenZip function', () => {
 
     const destination = join(ZIP_TEMP_DIR, 'test zip.7z');
 
-    const paths = ['inner dir', 'test file 1.txt', 'test file 2.md'].map(file =>
+    const files = ['inner dir', 'test file 1.txt', 'test file 2.md'].map(file =>
       join(ZIP_TEMP_DIR, file)
     );
 
-    await expect(sevenZip({ destination, paths })).rejects.toThrow(
+    await expect(sevenZip({ destination, files })).rejects.toThrow(
       '7-Zip executable not found.'
     );
   });

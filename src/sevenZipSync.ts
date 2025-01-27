@@ -16,7 +16,7 @@ import { executeSync, getSevenZipPath } from './utils';
  *   try {
  *     const zipOptions: ZipOptions = {
  *       destination: 'example.7z',
- *       paths: ['document.txt', 'image.png', 'folder']
+ *       files: ['document.txt', 'image.png', 'folder']
  *     };
  *
  *     sevenZipSync(zipOptions);
@@ -37,8 +37,8 @@ export function sevenZipSync(options: ZipOptions): void {
     throw new Error('7-Zip executable not found.');
   }
 
-  const { destination, paths } = options;
-  const args = ['a', destination, ...paths];
+  const { destination, files } = options;
+  const args = ['a', destination, ...files];
 
   executeSync(command, args);
 }
