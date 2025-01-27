@@ -1,12 +1,17 @@
 import { join } from 'path';
-import { mkdirSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, writeFileSync } from 'fs';
+import { rimrafSync } from 'rimraf';
 import { execSync } from 'child_process';
 import { EOL } from 'os';
 
 import { getSevenZipPath } from '../src/utils';
-import { DATA_DIR, FILE_PATHS } from './constants';
+import { DATA_DIR, FILE_PATHS, TEMP_DIR } from './constants';
 
 export default function globalSetup(): void {
+  if (existsSync(TEMP_DIR)) {
+    rimrafSync(TEMP_DIR);
+  }
+
   const innerDir = join(DATA_DIR, 'inner dir');
   mkdirSync(innerDir, { recursive: true });
 
