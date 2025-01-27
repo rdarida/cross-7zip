@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.0.17 (2025-01-27)
+
+
+### Features
+
+* use ZipOptions type ([b168498](https://github.com/rdarida/cross-7zip/commit/b168498c8c2ac2e3a93cfde8f0a03f3afaeff90b))
+
 ### 0.0.16 (2025-01-27)
 
 
