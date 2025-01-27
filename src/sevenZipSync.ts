@@ -37,8 +37,12 @@ export function sevenZipSync(options: ZipOptions): void {
     throw new Error('7-Zip executable not found.');
   }
 
-  const { destination, files } = options;
+  const { destination, files, level } = options;
   const args = ['a', destination, ...files];
+
+  if (level) {
+    args.push(`-mx${level}`);
+  }
 
   executeSync(command, args);
 }

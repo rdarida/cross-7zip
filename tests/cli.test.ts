@@ -22,7 +22,7 @@ describe('Test cli', () => {
     files.forEach(path => expect(existsSync(path)).toBeTruthy());
 
     const destination = join(CLI_TEMP_DIR, 'test zip.7z');
-    executeSync('node', ['dist/cli.js', 'zip', destination, ...files]);
+    executeSync('node', ['dist/cli.js', 'zip', destination, ...files, '--level=1']);
 
     const actual = readFileSync(destination);
     const expected = readFileSync(ZIP_PATH);

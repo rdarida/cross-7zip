@@ -2,38 +2,12 @@
 import yargs from 'yargs';
 
 import texts from './texts.json';
-import { ZipOptions, UnzipOptions, sevenZipSync, sevenUnzipSync } from '.';
+import { UnzipOptions, ZipOptions, sevenUnzipSync, sevenZipSync } from '.';
 
 yargs
   .scriptName('seven')
   .usage('$0 <cmd> [args]', texts.description)
   .demandCommand(1, texts.demandMsg)
-  .command<ZipOptions>(
-    'zip <destination> <files...>',
-    texts.zip.description,
-    yargs => {
-      return yargs
-        .example('$0 zip dest.7z file1 file2.txt folder', texts.zip.example)
-        .positional('destination', {
-          demandOption: true,
-          describe: texts.zip.args.destination,
-          type: 'string'
-        })
-        .positional('files', {
-          demandOption: true,
-          describe: texts.zip.args.files,
-          type: 'string',
-          array: true
-        });
-    },
-    args => {
-      try {
-        sevenZipSync(args);
-      } catch (e: any) {
-        console.error(e);
-      }
-    }
-  )
   .command<UnzipOptions>(
     'unzip <archive> [destination]',
     texts.unzip.description,
@@ -58,6 +32,39 @@ yargs
         };
 
         sevenUnzipSync(args);
+      } catch (e: any) {
+        console.error(e);
+      }
+    }
+  )
+  .command<ZipOptions>(
+    'zip <destination> <files...>',
+    texts.zip.description,
+    yargs => {
+      return yargs
+        .example('$0 zip dest.7z file1 file2.txt folder', texts.zip.example)
+        .positional('destination', {
+          demandOption: true,
+          describe: texts.zip.args.destination,
+          type: 'string'
+        })
+        .positional('files', {
+          demandOption: true,
+          describe: texts.zip.args.files,
+          type: 'string',
+          array: true
+        })
+        .option('level', {
+          alias: 'l',
+          describe: texts.zip.args.level,
+          type: 'number',
+          choices: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+          default: 5
+        });
+    },
+    args => {
+      try {
+        sevenZipSync(args);
       } catch (e: any) {
         console.error(e);
       }

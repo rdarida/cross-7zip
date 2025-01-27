@@ -18,4 +18,8 @@ export type ZipOptions = {
    * Specifies the paths to the files to add to the zipped file.
    */
   files: string[];
+  /**
+   * Compression level (1-9)
+   */
+  level?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 };

@@ -30,7 +30,7 @@ describe('Test sevenZipSync function', () => {
       join(ZIP_TEMP_DIR, file)
     );
 
-    sevenZipSync({ destination, files });
+    sevenZipSync({ destination, files, level: 1 });
 
     const actual = readFileSync(destination);
     const expected = readFileSync(ZIP_PATH);

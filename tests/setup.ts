@@ -16,11 +16,9 @@ export default function globalSetup(): void {
   });
 
   if (which('7z')) {
-    exec('7z a "test zip.7z"', { cwd: TEMP_DIR });
-    exec('7z l "test zip.7z"', { cwd: TEMP_DIR });
+    exec('7z a -mx1 "test zip.7z"', { cwd: TEMP_DIR });
   } else {
     const seven = getSevenZipPath();
-    exec(`${seven} a "test zip.7z"`, { cwd: TEMP_DIR });
-    exec(`${seven} l "test zip.7z"`, { cwd: TEMP_DIR });
+    exec(`${seven} a -mx1 "test zip.7z"`, { cwd: TEMP_DIR });
   }
 }
