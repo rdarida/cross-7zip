@@ -41,7 +41,7 @@ export async function sevenUnzip(options: UnzipOptions): Promise<void> {
   const args = ['x', archive, `-o${destination}`];
 
   if (password) {
-    args.push(`-p"${password}"`);
+    args.push(`-p${password}`);
   }
 
   return execute(command, args);

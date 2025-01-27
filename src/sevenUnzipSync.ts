@@ -41,7 +41,7 @@ export function sevenUnzipSync(options: UnzipOptions): void {
   const args = ['x', archive, `-o${destination}`];
 
   if (password) {
-    args.push(`-p"${password}"`);
+    args.push(`-p${password}`);
   }
 
   executeSync(command, args);

@@ -45,7 +45,7 @@ export async function sevenZip(options: ZipOptions): Promise<void> {
   }
 
   if (password) {
-    args.push(`-p"${password}"`);
+    args.push(`-p${password}`);
   }
 
   return execute(command, args);
