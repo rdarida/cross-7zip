@@ -9,6 +9,7 @@ import { execute, getSevenZipPath } from './utils';
  * @throws {Error} Will throw an error if the 7-Zip executable is not found.
  *
  * @example
+ * ```
  * import { UnzipOptions, sevenUnzip } from 'cross-7zip';
  *
  * async function extractFiles() {
@@ -24,6 +25,10 @@ import { execute, getSevenZipPath } from './utils';
  *     console.error('An error occurred during extraction:', error);
  *   }
  * }
+ * ```
+ *
+ * For additional examples, see the
+ * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/sevenUnzip.test.ts).
  */
 export async function sevenUnzip(options: UnzipOptions): Promise<void> {
   const command = getSevenZipPath();

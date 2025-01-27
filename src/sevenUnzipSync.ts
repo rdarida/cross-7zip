@@ -9,6 +9,7 @@ import { executeSync, getSevenZipPath } from './utils';
  * @throws {Error} Will throw an error if the 7-Zip executable is not found.
  *
  * @example
+ * ```
  * import { sevenUnzipSync } from 'cross-7zip';
  *
  * function extractFiles() {
@@ -24,6 +25,10 @@ import { executeSync, getSevenZipPath } from './utils';
  *     console.error('An error occurred during extraction:', error);
  *   }
  * }
+ * ```
+ *
+ * For additional examples, see the
+ * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/sevenUnzipSync.test.ts).
  */
 export function sevenUnzipSync(options: UnzipOptions): void {
   const command = getSevenZipPath();

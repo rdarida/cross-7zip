@@ -9,6 +9,7 @@ import { execute, getSevenZipPath } from './utils';
  * @throws {Error} Will throw an error if the 7-Zip executable is not found.
  *
  * @example
+ * ```
  * import { ZipOptions, sevenZip } from 'cross-7zip';
  *
  * async function createArchive() {
@@ -24,6 +25,10 @@ import { execute, getSevenZipPath } from './utils';
  *     console.error('An error occurred during compression:', error);
  *   }
  * }
+ * ```
+ *
+ * For additional examples, see the
+ * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/sevenZip.test.ts).
  */
 export async function sevenZip(options: ZipOptions): Promise<void> {
   const command = getSevenZipPath();
