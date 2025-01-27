@@ -2,16 +2,11 @@
 import yargs from 'yargs';
 
 import texts from './texts.json';
-import { sevenZipSync, sevenUnzipSync } from '.';
+import { UnzipOptions, sevenZipSync, sevenUnzipSync } from '.';
 
 type ZipArgs = {
   destination: string;
   paths: string[];
-};
-
-type UnzipArgs = {
-  archive: string;
-  destination: string;
 };
 
 yargs
@@ -44,7 +39,7 @@ yargs
       }
     }
   )
-  .command<UnzipArgs>(
+  .command<UnzipOptions>(
     'unzip <archive> [destination]',
     texts.unzip.description,
     yargs => {
@@ -62,8 +57,12 @@ yargs
     },
     args => {
       try {
-        const destination = args.destination ?? process.cwd();
-        sevenUnzipSync(args.archive, destination);
+        args = {
+          ...args,
+          destination: args.destination ?? process.cwd()
+        };
+
+        sevenUnzipSync(args);
       } catch (e: any) {
         console.error(e);
       }

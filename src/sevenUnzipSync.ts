@@ -1,11 +1,10 @@
+import { UnzipOptions } from './types';
 import { executeSync, getSevenZipPath } from './utils';
 
 /**
  * Extracts files from a specified zipped file **synchronously**.
  *
- * @param archive Specifies the path to the zipped file.
- *
- * @param destination Specifies the path to the output directory.
+ * @param options An object containing options for the extraction process.
  *
  * @throws {Error} Will throw an error if the 7-Zip executable is not found.
  *
@@ -14,23 +13,26 @@ import { executeSync, getSevenZipPath } from './utils';
  *
  * function extractFiles() {
  *   try {
- *     const archive = 'example.7z';
- *     const destination = './output';
+ *     const options: UnzipOptions = {
+ *       archive: 'example.7z',
+ *       destination: './output'
+ *     };
  *
- *     sevenUnzipSync(archive, destination);
+ *     sevenUnzipSync(options);
  *     console.log('Extraction completed successfully.');
  *   } catch (error) {
  *     console.error('An error occurred during extraction:', error);
  *   }
  * }
  */
-export function sevenUnzipSync(archive: string, destination: string): void {
+export function sevenUnzipSync(options: UnzipOptions): void {
   const command = getSevenZipPath();
 
   if (!command) {
     throw new Error('7-Zip executable not found.');
   }
 
+  const { archive, destination } = options;
   const args = ['x', archive, `-o${destination}`];
 
   executeSync(command, args);

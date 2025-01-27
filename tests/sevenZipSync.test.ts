@@ -2,6 +2,7 @@ import { join } from 'path';
 import { rimrafSync } from 'rimraf';
 import { mkdirSync, readFileSync } from 'fs';
 
+import { UnzipOptions } from '../src/types';
 import * as utils from '../src/utils';
 import { sevenUnzipSync } from '../src/sevenUnzipSync';
 import { sevenZipSync } from '../src/sevenZipSync';
@@ -16,7 +17,12 @@ describe('Test sevenZipSync function', () => {
   });
 
   test('recompresses extracted files into a new 7z archive and verifies it matches the original', () => {
-    sevenUnzipSync(ZIP_PATH, ZIP_TEMP_DIR);
+    const unzipOptions: UnzipOptions = {
+      archive: ZIP_PATH,
+      destination: ZIP_TEMP_DIR
+    };
+
+    sevenUnzipSync(unzipOptions);
 
     const paths = ['inner dir', 'test file 1.txt', 'test file 2.md'].map(file =>
       join(ZIP_TEMP_DIR, file)
