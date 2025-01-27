@@ -2,8 +2,9 @@ import { join } from 'path';
 import { rimrafSync } from 'rimraf';
 import { existsSync, mkdirSync, readFileSync } from 'fs';
 
-import { ZIP_PATH } from './constants';
 import { executeSync } from '../src/utils';
+
+import { TEST_ZIP } from './constants';
 
 const CLI_TEMP_DIR = join(__dirname, '.temp', 'cli');
 
@@ -13,7 +14,7 @@ describe('Test cli', () => {
   });
 
   test('unzips and recompresses files using CLI commands', () => {
-    executeSync('node', ['dist/cli.js', 'unzip', ZIP_PATH, CLI_TEMP_DIR]);
+    executeSync('node', ['dist/cli.js', 'unzip', TEST_ZIP, CLI_TEMP_DIR]);
 
     const destination = join(CLI_TEMP_DIR, 'test zip.7z');
 
@@ -32,7 +33,7 @@ describe('Test cli', () => {
     ]);
 
     const actual = readFileSync(destination);
-    const expected = readFileSync(ZIP_PATH);
+    const expected = readFileSync(TEST_ZIP);
     expect(actual).toEqual(expected);
   });
 

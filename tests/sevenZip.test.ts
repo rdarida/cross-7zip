@@ -7,7 +7,7 @@ import * as utils from '../src/utils';
 import { sevenUnzip } from '../src/sevenUnzip';
 import { sevenZip } from '../src/sevenZip';
 
-import { TEMP_DIR, ZIP_PATH } from './constants';
+import { TEMP_DIR, TEST_ZIP } from './constants';
 
 const ZIP_TEMP_DIR = join(TEMP_DIR, 'zip');
 
@@ -18,7 +18,7 @@ describe('Test sevenZip function', () => {
 
   test('recompresses extracted files into a new 7z archive and verifies it matches the original', async () => {
     const unzipOptions: UnzipOptions = {
-      archive: ZIP_PATH,
+      archive: TEST_ZIP,
       destination: ZIP_TEMP_DIR
     };
 
@@ -33,7 +33,7 @@ describe('Test sevenZip function', () => {
     await sevenZip({ destination, files, level: 1 });
 
     const actual = readFileSync(destination);
-    const expected = readFileSync(ZIP_PATH);
+    const expected = readFileSync(TEST_ZIP);
     expect(actual).toEqual(expected);
   });
 

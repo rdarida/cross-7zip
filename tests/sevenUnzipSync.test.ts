@@ -6,7 +6,7 @@ import { UnzipOptions } from '../src/types';
 import * as utils from '../src/utils';
 import { sevenUnzipSync } from '../src/sevenUnzipSync';
 
-import { TEMP_DIR, ZIP_PATH } from './constants';
+import { TEMP_DIR, TEST_ZIP } from './constants';
 
 const UNZIP_TEMP_DIR = join(TEMP_DIR, 'unzipSync');
 
@@ -17,7 +17,7 @@ describe('Test sevenUnzipSync function', () => {
 
   test('extracts files from a 7z archive and verifies their existence', () => {
     const options: UnzipOptions = {
-      archive: ZIP_PATH,
+      archive: TEST_ZIP,
       destination: UNZIP_TEMP_DIR
     };
 
@@ -39,7 +39,7 @@ describe('Test sevenUnzipSync function', () => {
     jest.spyOn(utils, 'getSevenZipPath').mockReturnValue(undefined);
 
     const options: UnzipOptions = {
-      archive: ZIP_PATH,
+      archive: TEST_ZIP,
       destination: UNZIP_TEMP_DIR
     };
 

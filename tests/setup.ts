@@ -5,7 +5,8 @@ import { execSync } from 'child_process';
 import { EOL } from 'os';
 
 import { getSevenZipPath } from '../src/utils';
-import { DATA_DIR, FILE_PATHS, TEMP_DIR } from './constants';
+
+import { DATA_DIR, TEST_FILES, TEMP_DIR } from './constants';
 
 export default function globalSetup(): void {
   if (existsSync(TEMP_DIR)) {
@@ -15,7 +16,7 @@ export default function globalSetup(): void {
   const innerDir = join(DATA_DIR, 'inner dir');
   mkdirSync(innerDir, { recursive: true });
 
-  FILE_PATHS.forEach(path => {
+  TEST_FILES.forEach(path => {
     const content = `Hello, ${path.replace(DATA_DIR, '')}` + EOL;
     writeFileSync(path, content);
   });
