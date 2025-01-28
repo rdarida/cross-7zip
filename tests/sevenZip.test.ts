@@ -37,6 +37,6 @@ describe('Test sevenZip function', () => {
   });
 
   afterAll(() => {
-    rimrafSync(ZIP_TEMP_DIR);
+    // rimrafSync(ZIP_TEMP_DIR);
   });
 });
