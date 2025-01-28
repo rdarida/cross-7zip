@@ -61,6 +61,50 @@ Compresses multiple files into a zipped file **asynchronously**.
 Compresses multiple files into a zipped file **synchronously**.
 [Example](https://rdarida.github.io/cross-7zip/functions/sevenZipSync.html#example)
 
+## CLI Tool Usage
+
+This package also includes a CLI tool for quick and simple operations with 7-Zip. Below are some examples of how to use it:
+
+### Installation
+
+Make sure the package is installed globally to access the CLI tool:
+
+```bash
+npm install -g cross-7zip
+```
+
+### Commands
+
+**Create an Archive**
+
+To compress files or directories into an archive, use the `zip` command:
+
+```bash
+seven zip <output_archive> <file_paths...>
+```
+
+**Extract Files from an Archive**
+
+To extract files from an archive, use the `unzip` command:
+
+```bash
+seven unzip <input_archive> [destination]
+```
+
+### Examples
+
+**Create `example.7z` from `file1.txt` `folder`**
+
+```bash
+seven zip example.7z file1.txt folder
+```
+
+**Extract Files from the `example.7z` into the `ouput` folder**
+
+```bash
+seven unzip example.7z ouput
+```
+
 ## Documentation
 
 See documentation [here](https://rdarida.github.io/cross-7zip/).
