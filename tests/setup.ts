@@ -29,5 +29,5 @@ export default function globalSetup(): void {
   });
 
   const seven = getSevenZipPath();
-  execSync(`${seven} a -mx1 "../test zip.7z"`, { cwd: DATA_DIR });
+  execSync(`${seven} a "../test zip.7z"`, { cwd: DATA_DIR });
 }
