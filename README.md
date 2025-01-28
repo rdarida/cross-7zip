@@ -65,6 +65,15 @@ Compresses multiple files into a zipped file **synchronously**.
 
 See documentation [here](https://rdarida.github.io/cross-7zip/).
 
+## Supported Platforms and Architectures
+
+This library relies on the 7-Zip executables, which support the following
+platforms and architectures:
+
+- **Windows**: `arm64`, `x86`, `x64`
+- **macOS**: `arm64`, `x86, x64`
+- **Linux**: `arm`, `arm64`, `x86`, `x64`
+
 <hr>
 
 <details>
