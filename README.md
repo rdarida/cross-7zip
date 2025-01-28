@@ -63,7 +63,8 @@ Compresses multiple files into a zipped file **synchronously**.
 
 ## CLI Tool Usage
 
-This package also includes a CLI tool for quick and simple operations with 7-Zip. Below are some examples of how to use it:
+This package also includes a CLI tool for quick and simple operations with 7-Zip.
+Below are some examples of how to use it:
 
 ### Installation
 
