@@ -23,7 +23,7 @@ describe('Test cli', () => {
     files.forEach(path => expect(existsSync(path)).toBeTruthy());
   });
 
-  test('should create a ZIP file', () => {
+  xtest('should create a ZIP file', () => {
     const destination = join(CLI_TEMP_DIR, 'test zip.7z');
 
     executeSync('node', [

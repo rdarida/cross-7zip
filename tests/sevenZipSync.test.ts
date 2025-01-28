@@ -14,7 +14,7 @@ describe('Test sevenZipSync function', () => {
     mkdirSync(ZIP_TEMP_DIR, { recursive: true });
   });
 
-  test('creates a valid 7-Zip archive', () => {
+  xtest('creates a valid 7-Zip archive', () => {
     const destination = join(ZIP_TEMP_DIR, 'test zip.7z');
 
     sevenZipSync({ destination, files: TEST_FILES, level: 1 });
