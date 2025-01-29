@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.0.39 (2025-01-29)
+
+
+### Bug Fixes
+
+* pack install.js ([70cd16c](https://github.com/rdarida/cross-7zip/commit/70cd16c2eba2f211c1ea64884991650319735989))
+
 ### 0.0.38 (2025-01-29)
 
 
