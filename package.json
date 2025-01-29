@@ -1,6 +1,6 @@
 {
   "name": "cross-7zip",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "description": "Cross-platform 7-Zip for Node.js.",
   "keywords": [
     "7-Zip",
