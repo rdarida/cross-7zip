@@ -28,7 +28,7 @@ import { executeSync, getSevenZipPath } from './utils';
  * ```
  *
  * For additional examples, see the
- * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/syncZipUnzipSync.test.ts).
+ * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/zipUnzipSync.test.ts).
  */
 export function sevenUnzipSync(options: UnzipOptions): void {
   const command = getSevenZipPath();
