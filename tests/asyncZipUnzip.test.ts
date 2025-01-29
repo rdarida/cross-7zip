@@ -16,14 +16,14 @@ import {
 
 describe('Test sevenZip and sevenUnzip functions', () => {
   const tempDir = join(TEMP_DIR, 'async_test');
-  const destination = join(tempDir, 'test zip.7z');
-  const password = TEST_PASSWORD;
 
   beforeAll(() => {
     mkdirSync(tempDir, { recursive: true });
   });
 
   it('creates a valid 7-Zip archive', async () => {
+    const destination = join(tempDir, 'test zip.7z');
+
     await sevenZip({ destination, files: TEST_FILES, level: 1 });
 
     const actual = readFileSync(destination);
@@ -32,6 +32,9 @@ describe('Test sevenZip and sevenUnzip functions', () => {
   });
 
   it('extracts files from a 7z archive', async () => {
+    const destination = join(tempDir, 'test zip password.7z');
+    const password = TEST_PASSWORD;
+
     await sevenZip({ destination, files: TEST_FILES, password });
 
     await sevenUnzip({
@@ -76,6 +79,6 @@ describe('Test sevenZip and sevenUnzip functions', () => {
   });
 
   afterAll(() => {
-    // rimrafSync(tempDir);
+    rimrafSync(tempDir);
   });
 });
