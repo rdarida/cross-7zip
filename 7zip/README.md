@@ -7,7 +7,7 @@ the official 7-Zip archives have been renamed as follows:
 
 ### Windows
 
-Download: [https://7zip.org/a/7z2409-extra.7z](https://7zip.org/a/7z2409-extra.7z)
+Download: [7z2409-extra.7z](https://7zip.org/a/7z2409-extra.7z)
 
     .
     ├── arm64/
