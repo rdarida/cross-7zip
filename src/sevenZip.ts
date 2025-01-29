@@ -28,7 +28,7 @@ import { execute, getSevenZipPath } from './utils';
  * ```
  *
  * For additional examples, see the
- * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/sevenZip.test.ts).
+ * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/zipUnzip.test.ts).
  */
 export async function sevenZip(options: ZipOptions): Promise<void> {
   const command = getSevenZipPath();

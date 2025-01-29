@@ -1,30 +1,30 @@
 import { join } from 'path';
-import { rimrafSync } from 'rimraf';
 import { existsSync, mkdirSync, readFileSync } from 'fs';
+import { rimrafSync } from 'rimraf';
 
 import { executeSync } from '../src/utils';
 
-import { TEST_FILES, TEST_ZIP } from './constants';
-
-const CLI_TEMP_DIR = join(__dirname, '.temp', 'cli');
+import { TEMP_DIR, TEST_FILES, TEST_ZIP } from './constants';
 
 describe('Test cli', () => {
+  const tempDir = join(TEMP_DIR, 'cli_test');
+
   beforeAll(() => {
-    mkdirSync(CLI_TEMP_DIR, { recursive: true });
+    mkdirSync(tempDir, { recursive: true });
   });
 
-  test('should extract the contents of a ZIP file', () => {
-    executeSync('node', ['dist/cli.js', 'unzip', TEST_ZIP, CLI_TEMP_DIR]);
+  it('should extract the contents of a ZIP file', () => {
+    executeSync('node', ['dist/cli.js', 'unzip', TEST_ZIP, tempDir]);
 
     const files = ['inner dir', 'test file 1.txt', 'test file 2.md'].map(file =>
-      join(CLI_TEMP_DIR, file)
+      join(tempDir, file)
     );
 
     files.forEach(path => expect(existsSync(path)).toBeTruthy());
   });
 
-  xtest('should create a ZIP file', () => {
-    const destination = join(CLI_TEMP_DIR, 'test zip.7z');
+  it('should create a ZIP file', () => {
+    const destination = join(tempDir, 'test zip.7z');
 
     executeSync('node', [
       'dist/cli.js',
@@ -40,6 +40,6 @@ describe('Test cli', () => {
   });
 
   afterAll(() => {
-    rimrafSync(CLI_TEMP_DIR);
+    rimrafSync(tempDir);
   });
 });

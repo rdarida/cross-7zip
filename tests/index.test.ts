@@ -6,19 +6,19 @@ import {
 } from '../src/index';
 
 describe('Test export', () => {
-  test('sevenUnzip should be truthy', () => {
+  it('exports sevenUnzip', () => {
     expect(sevenUnzip).toBeTruthy();
   });
 
-  test('sevenUnzipSync should be truthy', () => {
+  it('exports sevenUnzipSync', () => {
     expect(sevenUnzipSync).toBeTruthy();
   });
 
-  test('sevenZip should be truthy', () => {
+  it('exports sevenZip', () => {
     expect(sevenZip).toBeTruthy();
   });
 
-  test('sevenZipSync should be truthy', () => {
+  it('exports sevenZipSync', () => {
     expect(sevenZipSync).toBeTruthy();
   });
 });
