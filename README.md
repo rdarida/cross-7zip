@@ -102,10 +102,6 @@ seven zip example.7z file1.txt folder
 seven unzip example.7z ouput
 ```
 
-## Documentation
-
-See documentation [here](https://rdarida.github.io/cross-7zip/).
-
 ## Supported Platforms and Architectures
 
 This library relies on the 7-Zip executables, which support the following
@@ -114,6 +110,10 @@ platforms and architectures:
 - **Windows**: `arm64`, `x86`, `x64`
 - **macOS**: `arm64`, `x86, x64`
 - **Linux**: `arm`, `arm64`, `x86`, `x64`
+
+## Documentation
+
+See documentation [here](https://rdarida.github.io/cross-7zip/).
 
 <hr>
 
