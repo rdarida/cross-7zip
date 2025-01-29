@@ -4,10 +4,6 @@
     <img src="https://img.shields.io/npm/v/cross-7zip.svg" />
   </a>
 
-  <a href="https://rdarida.github.io/cross-7zip/" target="_blank">
-    <img src="https://img.shields.io/badge/website-blue?style=flat" />
-  </a>
-
   <a href="https://github.com/rdarida/cross-7zip" target="_blank">
     <img src="https://img.shields.io/badge/-repository-222222?style=flat&logo=github" />
   </a>
