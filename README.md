@@ -111,7 +111,7 @@ platforms and architectures:
 - **macOS**: `arm64`, `x86, x64`
 - **Linux**: `arm`, `arm64`, `x86`, `x64`
 
-More information [here](https://github.com/rdarida/cross-7zip/blob/main/7zip/README.md).
+For details, click [here](https://github.com/rdarida/cross-7zip/blob/main/7zip/README.md).
 
 ## Documentation
 
