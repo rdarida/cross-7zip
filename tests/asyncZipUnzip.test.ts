@@ -5,7 +5,7 @@ import { sevenZip } from '../src/sevenZip';
 
 import { TEMP_DIR, TEST_FILES, TEST_ZIP } from './constants';
 
-describe('', () => {
+describe('Test sevenZip and sevenUnzip functions', () => {
   const tempDir = join(TEMP_DIR, 'async_test');
   const destination = join(tempDir, 'test zip.7z');
 
@@ -13,8 +13,8 @@ describe('', () => {
     mkdirSync(tempDir, { recursive: true });
   });
 
-  it('', async () => {
-    await sevenZip({ destination, files: TEST_FILES });
+  it('creates a valid 7-Zip archive', async () => {
+    await sevenZip({ destination, files: TEST_FILES, level: 1 });
 
     const actual = readFileSync(destination);
     const expected = readFileSync(TEST_ZIP);

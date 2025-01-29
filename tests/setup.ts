@@ -13,5 +13,5 @@ export default function globalSetup(): void {
 
   mkdirSync(TEMP_DIR, { recursive: true });
 
-  execSync(`${getSevenZipPath()} a "${TEST_ZIP}"`, { cwd: DATA_DIR });
+  execSync(`${getSevenZipPath()} a -mx1 "${TEST_ZIP}"`, { cwd: DATA_DIR });
 }
