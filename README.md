@@ -111,6 +111,8 @@ platforms and architectures:
 - **macOS**: `arm64`, `x86, x64`
 - **Linux**: `arm`, `arm64`, `x86`, `x64`
 
+More information [here](7zip/README.md).
+
 ## Documentation
 
 See documentation [here](https://rdarida.github.io/cross-7zip/).

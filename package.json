@@ -41,7 +41,7 @@
     "release": "standard-version",
     "postrelease": "git push --follow-tags origin HEAD",
     "predocs": "rimraf docs",
-    "docs": "typedoc --out docs --exclude \"src/cli.ts\" src"
+    "docs": "typedoc"
   },
   "dependencies": {
     "yargs": "^17.7.2"
