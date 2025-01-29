@@ -1,14 +1,13 @@
 import { join } from 'path';
+import { readdirSync } from 'fs';
 
 export const TEMP_DIR = join(__dirname, '.temp');
 
-export const DATA_DIR = join(TEMP_DIR, 'data');
+export const DATA_DIR = join(__dirname, 'data');
 
-export const TEST_FILES = [
-  'inner dir',
-  'test file 1.txt',
-  'test file 2.md'
-].map(fileName => join(DATA_DIR, fileName));
+export const TEST_FILES = readdirSync(DATA_DIR).map(fileName =>
+  join(DATA_DIR, fileName)
+);
 
 export const TEST_ZIP = join(TEMP_DIR, 'test zip.7z');
 
