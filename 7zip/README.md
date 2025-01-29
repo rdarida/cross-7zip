@@ -7,7 +7,7 @@ Download: [https://7zip.org/a/7z2409-extra.7z](https://7zip.org/a/7z2409-extra.7
 
     .
     ├── arm64/
-    |   └── **7za.exe** -> `win32_arm64_7z.exe`
+    |   └── \*\*7za.exe\*\* -> `win32_arm64_7z.exe`
     ├── x64/
     |   └── 7za.exe -> win32_x64_7z.exe
     └── 7za.exe -> win32_ai32_7z.exe
