@@ -4,13 +4,13 @@
 
 7-Zip Extra: standalone console version, 7z DLL, Plugin for Far Manager
 Download: [https://7zip.org/a/7z2409-extra.7z](https://7zip.org/a/7z2409-extra.7z)
-  .
-  ├── __template__/
-  |   ├── package.json.mustache
-  |   └── README.md.mustache
-  ├── packages/
-  ├── lerna.json
-  └── package.json
+    .
+    ├── __template__/
+    |   ├── package.json.mustache
+    |   └── README.md.mustache
+    ├── packages/
+    ├── lerna.json
+    └── package.json
 
 - **win32_arm64_7z**: Windows x86 / x64
 - **win32_ai32_7z**: TBD
