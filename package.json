@@ -28,7 +28,8 @@
   },
   "files": [
     "7zip",
-    "dist"
+    "dist",
+    "install.js"
   ],
   "scripts": {
     "postinstall": "node ./install.js",
