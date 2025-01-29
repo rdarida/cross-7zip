@@ -33,13 +33,6 @@ jobs:
           npm run build
           npm test
 
-      - name: Log
-        run: |
-          cd tests\.temp
-          7z l "test zip.7z"
-          cd zip
-          7z l "test zip.7z"
-
   # linux x64
   test_linux:
     runs-on: ubuntu-latest

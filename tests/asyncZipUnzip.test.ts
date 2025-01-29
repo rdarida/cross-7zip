@@ -5,16 +5,15 @@ import { sevenZip } from '../src/sevenZip';
 
 import { TEMP_DIR, TEST_FILES, TEST_ZIP } from './constants';
 
-const ASYNC_DIR = join(TEMP_DIR, 'async_test');
-
 describe('', () => {
+  const tempDir = join(TEMP_DIR, 'async_test');
+  const destination = join(tempDir, 'test zip.7z');
+
   beforeAll(() => {
-    mkdirSync(ASYNC_DIR, { recursive: true });
+    mkdirSync(tempDir, { recursive: true });
   });
 
   it('', async () => {
-    const destination = join(ASYNC_DIR, 'test zip.7z');
-
     await sevenZip({ destination, files: TEST_FILES });
 
     const actual = readFileSync(destination);
