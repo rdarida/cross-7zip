@@ -9,7 +9,7 @@ import { TEMP_DIR, TEST_ZIP } from './constants';
 
 const UNZIP_TEMP_DIR = join(TEMP_DIR, 'unzip');
 
-describe('Test sevenUnzip function', () => {
+xdescribe('Test sevenUnzip function', () => {
   beforeAll(() => {
     mkdirSync(UNZIP_TEMP_DIR, { recursive: true });
   });

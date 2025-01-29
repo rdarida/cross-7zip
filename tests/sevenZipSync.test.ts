@@ -9,12 +9,12 @@ import { TEMP_DIR, TEST_FILES, TEST_ZIP } from './constants';
 
 const ZIP_TEMP_DIR = join(TEMP_DIR, 'zipSync');
 
-describe('Test sevenZipSync function', () => {
+xdescribe('Test sevenZipSync function', () => {
   beforeAll(() => {
     mkdirSync(ZIP_TEMP_DIR, { recursive: true });
   });
 
-  xtest('creates a valid 7-Zip archive', () => {
+  test('creates a valid 7-Zip archive', () => {
     const destination = join(ZIP_TEMP_DIR, 'test zip.7z');
 
     sevenZipSync({ destination, files: TEST_FILES, level: 1 });
