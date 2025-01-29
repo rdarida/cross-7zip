@@ -1,12 +1,11 @@
 # Included 7-Zip (v24.09) Binaries
 
 ## Binary Renaming Convention
-To standardize binary names across platforms, the extracted 7za.exe files from
+
+To standardize binary names across platforms, the extracted 7-Zip binary files from
 the official 7-Zip archives have been renamed as follows:
 
 ### Windows
-
-7-Zip Extra: standalone console version, 7z DLL, Plugin for Far Manager
 
 Download: [https://7zip.org/a/7z2409-extra.7z](https://7zip.org/a/7z2409-extra.7z)
 
@@ -19,11 +18,7 @@ Download: [https://7zip.org/a/7z2409-extra.7z](https://7zip.org/a/7z2409-extra.7
 
 ### Linux
 
-7-Zip for Linux: console version
-
 #### arm
-
-32-bit Linux arm
 
 Download: [7z2409-linux-arm.tar.xz](https://7zip.org/a/7z2409-linux-arm.tar.xz)
 
@@ -32,16 +27,12 @@ Download: [7z2409-linux-arm.tar.xz](https://7zip.org/a/7z2409-linux-arm.tar.xz)
 
 #### arm64
 
-64-bit Linux arm64
-
 Download: [7z2409-linux-arm64.tar.xz](https://7zip.org/a/7z2409-linux-arm64.tar.xz)
 
     .
     └── 7zz  →  linux_arm64_7z
 
 #### x86
-
-32-bit Linux x86
 
 Download: [7z2409-linux-x86.tar.xz](https://7zip.org/a/7z2409-linux-x86.tar.xz)
 
@@ -50,16 +41,12 @@ Download: [7z2409-linux-x86.tar.xz](https://7zip.org/a/7z2409-linux-x86.tar.xz)
 
 #### x64
 
-64-bit Linux x64
-
 Download: [7z2409-linux-x64.tar.xz](https://7zip.org/a/7z2409-linux-x64.tar.xz)
 
     .
     └── 7zz  →  linux_x64_7z
 
 ### macOS
-
-7-Zip for macOS: console version
 
 Download: [7z2409-mac.tar.xz](https://7zip.org/a/7z2409-mac.tar.xz)
 
