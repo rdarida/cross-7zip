@@ -21,6 +21,7 @@
     "jest.config.js": true,
     "LICENSE": true,
     "package-lock.json": true,
-    "sonar-project.properties": true
+    "sonar-project.properties": true,
+    "typedoc.json": true
   }
 }
