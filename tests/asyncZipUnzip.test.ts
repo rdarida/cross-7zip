@@ -1,15 +1,23 @@
 import { join } from 'path';
-import { mkdirSync, readFileSync } from 'fs';
+import { existsSync, mkdirSync, readFileSync } from 'fs';
 import { rimrafSync } from 'rimraf';
 
 import * as utils from '../src/utils';
 import { sevenZip } from '../src/sevenZip';
+import { sevenUnzip } from '../src/sevenUnzip';
 
-import { TEMP_DIR, TEST_FILES, TEST_ZIP } from './constants';
+import {
+  DATA_DIR,
+  TEMP_DIR,
+  TEST_FILES,
+  TEST_PASSWORD,
+  TEST_ZIP
+} from './constants';
 
 describe('Test sevenZip and sevenUnzip functions', () => {
   const tempDir = join(TEMP_DIR, 'async_test');
   const destination = join(tempDir, 'test zip.7z');
+  const password = TEST_PASSWORD;
 
   beforeAll(() => {
     mkdirSync(tempDir, { recursive: true });
@@ -23,10 +31,42 @@ describe('Test sevenZip and sevenUnzip functions', () => {
     expect(actual).toEqual(expected);
   });
 
+  it('extracts files from a 7z archive', async () => {
+    await sevenZip({ destination, files: TEST_FILES, password });
+
+    await sevenUnzip({
+      archive: destination,
+      destination: tempDir,
+      password
+    });
+
+    [
+      'test file 1.txt',
+      'test file 2.md',
+      'inner dir/test file 3.txt',
+      'inner dir/test file 4.md'
+    ]
+      .map(file => ({
+        actual: join(tempDir, file),
+        expected: join(DATA_DIR, file)
+      }))
+      .forEach(file => {
+        expect(existsSync(file.actual)).toBeTruthy();
+
+        const actual = readFileSync(file.actual);
+        const expected = readFileSync(file.expected);
+        expect(actual).toEqual(expected);
+      });
+  });
+
   it('throws an error if 7-Zip executable is not found', async () => {
     jest.spyOn(utils, 'getSevenZipPath').mockReturnValue(undefined);
 
     await expect(sevenZip({ destination: '', files: [] })).rejects.toThrow(
+      '7-Zip executable not found.'
+    );
+
+    await expect(sevenUnzip({ archive: '', destination: '' })).rejects.toThrow(
       '7-Zip executable not found.'
     );
   });
@@ -36,6 +76,6 @@ describe('Test sevenZip and sevenUnzip functions', () => {
   });
 
   afterAll(() => {
-    rimrafSync(tempDir);
+    // rimrafSync(tempDir);
   });
 });
