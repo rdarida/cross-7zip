@@ -1,4 +1,6 @@
-# Included 7-Zip (v24.09) Binaries
+# Included 7-Zip Binaries
+
+## Version: 24.09
 
 ## Binary Renaming Convention
 
