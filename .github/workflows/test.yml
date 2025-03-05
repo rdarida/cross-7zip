@@ -3,15 +3,11 @@ name: Test
 on:
   push:
     branches:
+      - '!main'
+  pull_request:
+    branches:
       - main
-    paths:
-      - src/**
-      - tests/**
 
-  workflow_dispatch:
-
-permissions:
-  contents: write
 
 jobs:
   # win32 x64
@@ -26,9 +22,11 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Test
         run: |
-          npm ci
           npm run lint
           npm run build
           npm test
@@ -45,9 +43,11 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Test
         run: |
-          npm ci
           npm run lint
           npm run build
           npm test
@@ -64,9 +64,11 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Test
         run: |
-          npm ci
           npm run lint
           npm run build
           npm test

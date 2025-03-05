@@ -8,10 +8,6 @@
     <img src="https://img.shields.io/badge/-repository-222222?style=flat&logo=github" />
   </a>
 
-  <a href="https://github.com/rdarida/cross-7zip/actions/workflows/release.yml" target="_blank" alt="GitHub Actions">
-    <img src="https://github.com/rdarida/cross-7zip/actions/workflows/release.yml/badge.svg" alt="Release" />
-  </a>
-
   <a href="https://sonarcloud.io/dashboard?id=rdarida_cross-7zip" target="_blank" alt="SonarCloud">
     <img src="https://sonarcloud.io/api/project_badges/measure?project=rdarida_cross-7zip&metric=coverage" alt="coverage" />
   </a>
