@@ -8,6 +8,10 @@
     <img src="https://img.shields.io/badge/-repository-222222?style=flat&logo=github" />
   </a>
 
+  <a href="https://github.com/rdarida/cross-7zip/actions/workflows/publish.yml" target="_blank" alt="GitHub Actions">
+    <img src="https://github.com/rdarida/cross-7zip/actions/workflows/publish.yml/badge.svg" alt="Publish">
+  </a>
+
   <a href="https://sonarcloud.io/dashboard?id=rdarida_cross-7zip" target="_blank" alt="SonarCloud">
     <img src="https://sonarcloud.io/api/project_badges/measure?project=rdarida_cross-7zip&metric=coverage" alt="coverage" />
   </a>
@@ -15,6 +19,9 @@
   <img src="https://img.shields.io/librariesio/release/npm/cross-7zip" />
 </p>
 <hr>
+
+# cross-7zip
+Cross-platform 7-Zip for Node.js
 
 ## Installation
 
@@ -109,10 +116,6 @@ platforms and architectures:
 
 For details, click [here](https://github.com/rdarida/cross-7zip/blob/main/7zip/README.md).
 
-## Documentation
-
-See documentation [here](https://rdarida.github.io/cross-7zip/).
-
 <hr>
 
 <details>
@@ -120,6 +123,7 @@ See documentation [here](https://rdarida.github.io/cross-7zip/).
     <strong>Resources<strong>
   </summary>
 
+- [Documentation](https://rdarida.github.io/cross-7zip/)
 - [7-Zip](https://www.7-zip.org/)
 - [execFileSync](https://nodejs.org/api/child_process.html#child_process_child_process_execfilesync_file_args_options)
 - **Windows**
