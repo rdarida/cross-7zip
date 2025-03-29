@@ -30,4 +30,8 @@ export type ZipOptions = {
    * Password for the archive.
    */
   password?: string;
+  /**
+   * Overwrites the existing ZIP file instead of updating it.
+   */
+  overwrite?: boolean;
 };
