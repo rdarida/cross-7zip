@@ -4,7 +4,7 @@ import { execSync } from 'child_process';
 
 import { getSevenZipPath } from '../src/utils';
 
-import { DATA_DIR, TEMP_DIR, TEST_FILES, TEST_ZIP } from './constants';
+import { TEMP_DIR, TEST_FILES, TEST_ZIP } from './constants';
 
 export default function globalSetup(): void {
   if (existsSync(TEMP_DIR)) {
