@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.45](https://github.com/rdarida/cross-7zip/compare/v0.0.44...v0.0.45) (2025-03-29)
+
 ### [0.0.44](https://github.com/rdarida/cross-7zip/compare/v0.0.43...v0.0.44) (2025-03-27)
 
 ### [0.0.43](https://github.com/rdarida/cross-7zip/compare/v0.0.42...v0.0.43) (2025-03-27)
