@@ -1,23 +1,23 @@
 <img src="https://repository-images.githubusercontent.com/919105664/7efca389-6d8f-412f-853e-afffe36d42a8" alt="Cover" />
 
 <p align="center">
-  <a href="https://npmjs.com/package/cross-7zip/" target="_blank">
-    <img src="https://img.shields.io/npm/v/cross-7zip.svg" alt="NPM" />
+  <a href="https://npmjs.com/package/cross-7zip/" target="_blank" alt="NPM">
+    <img src="https://img.shields.io/npm/v/cross-7zip.svg" alt="NPM Badge" />
   </a>
 
-  <a href="https://github.com/rdarida/cross-7zip" target="_blank">
-    <img src="https://img.shields.io/badge/-repository-222222?style=flat&logo=github" alt="GitHub Repository" />
+  <a href="https://github.com/rdarida/cross-7zip" target="_blank" alt="GitHub Repository">
+    <img src="https://img.shields.io/badge/-repository-222222?style=flat&logo=github" alt="GitHub Repository Badge" />
   </a>
 
   <a href="https://github.com/rdarida/cross-7zip/actions/workflows/publish.yml" target="_blank" alt="GitHub Actions">
-    <img src="https://github.com/rdarida/cross-7zip/actions/workflows/publish.yml/badge.svg" alt="Publish" />
+    <img src="https://github.com/rdarida/cross-7zip/actions/workflows/publish.yml/badge.svg" alt="Publish Badge" />
   </a>
 
   <a href="https://sonarcloud.io/dashboard?id=rdarida_cross-7zip" target="_blank" alt="SonarCloud">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=rdarida_cross-7zip&metric=coverage" alt="Coverage" />
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=rdarida_cross-7zip&metric=coverage" alt="Coverage Badge" />
   </a>
 
-  <img src="https://img.shields.io/librariesio/release/npm/cross-7zip" alt="Dependencies" />
+  <img src="https://img.shields.io/librariesio/release/npm/cross-7zip" alt="Dependencies Badge" />
 </p>
 <hr>
 
@@ -137,7 +137,7 @@ For details, click [here](https://github.com/rdarida/cross-7zip/blob/main/7zip/R
 <hr>
 
 <p align="center">
-  <a href="LICENSE" target="_blank">
-    <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
+  <a href="LICENSE" target="_blank" alt="License">
+    <img src="https://img.shields.io/badge/license-MIT-green" alt="License Badge" />
   </a>
 </p>
