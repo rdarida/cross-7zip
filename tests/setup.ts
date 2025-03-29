@@ -4,7 +4,7 @@ import { execSync } from 'child_process';
 
 import { getSevenZipPath } from '../src/utils';
 
-import { DATA_DIR, TEMP_DIR, TEST_ZIP } from './constants';
+import { DATA_DIR, TEMP_DIR, TEST_FILES, TEST_ZIP } from './constants';
 
 export default function globalSetup(): void {
   if (existsSync(TEMP_DIR)) {
@@ -13,5 +13,9 @@ export default function globalSetup(): void {
 
   mkdirSync(TEMP_DIR, { recursive: true });
 
-  execSync(`${getSevenZipPath()} a -mx1 "${TEST_ZIP}"`, { cwd: DATA_DIR });
+  TEST_FILES.forEach(testFile => {
+    execSync(`${getSevenZipPath()} a -mx1 "${TEST_ZIP}" "${testFile}"`, {
+      cwd: TEMP_DIR
+    });
+  });
 }
