@@ -1,4 +1,3 @@
-import { existsSync } from 'fs';
 import { rimrafSync } from 'rimraf';
 
 import { ZipOptions } from './types';
@@ -52,7 +51,7 @@ export function sevenZipSync(options: ZipOptions): void {
     args.push('-mhe=on');
   }
 
-  if (overwrite && existsSync(destination)) {
+  if (overwrite) {
     rimrafSync(destination);
   }
 

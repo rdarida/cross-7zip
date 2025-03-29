@@ -17,7 +17,8 @@
       "files": "Specifies the paths to the files to add to the zipped file",
       "destination": "Specifies the path to the output zipped file",
       "level": "Compression level (1-9)",
-      "password": "Password for the archive"
+      "password": "Password for the archive",
+      "overwrite": "Overwrites the existing ZIP file instead of updating it"
     }
   }
 }
