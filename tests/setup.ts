@@ -4,7 +4,12 @@ import { execSync } from 'child_process';
 
 import { getSevenZipPath } from '../src/utils';
 
-import { DATA_DIR, TEMP_DIR, TEST_FILES, TEST_ZIP } from './constants';
+import {
+  OVERWRITE_TEST_ZIP,
+  TEMP_DIR,
+  TEST_FILES,
+  TEST_ZIP
+} from './constants';
 
 export default function globalSetup(): void {
   if (existsSync(TEMP_DIR)) {
@@ -18,4 +23,13 @@ export default function globalSetup(): void {
       cwd: TEMP_DIR
     });
   });
+
+  const lastFile = TEST_FILES[TEST_FILES.length - 1];
+
+  execSync(
+    `${getSevenZipPath()} a -mx1 "${OVERWRITE_TEST_ZIP}" "${lastFile}"`,
+    {
+      cwd: TEMP_DIR
+    }
+  );
 }

@@ -70,6 +70,11 @@ yargs
           alias: 'p',
           describe: texts.zip.args.password,
           type: 'string'
+        })
+        .option('overwrite', {
+          alias: 'o',
+          describe: texts.zip.args.overwrite,
+          type: 'boolean'
         });
     },
     args => {

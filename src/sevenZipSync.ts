@@ -1,3 +1,5 @@
+import { rimrafSync } from 'rimraf';
+
 import { ZipOptions } from './types';
 import { executeSync, getSevenZipPath } from './utils';
 
@@ -37,7 +39,7 @@ export function sevenZipSync(options: ZipOptions): void {
     throw new Error('7-Zip executable not found.');
   }
 
-  const { destination, files, level, password } = options;
+  const { destination, files, level, password, overwrite } = options;
   const args = ['a', destination, ...files];
 
   if (level) {
@@ -47,6 +49,10 @@ export function sevenZipSync(options: ZipOptions): void {
   if (password) {
     args.push(`-p${password}`);
     args.push('-mhe=on');
+  }
+
+  if (overwrite) {
+    rimrafSync(destination);
   }
 
   executeSync(command, args);

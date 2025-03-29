@@ -1,3 +1,5 @@
+import { rimraf } from 'rimraf';
+
 import { ZipOptions } from './types';
 import { execute, getSevenZipPath } from './utils';
 
@@ -37,7 +39,7 @@ export async function sevenZip(options: ZipOptions): Promise<void> {
     throw new Error('7-Zip executable not found.');
   }
 
-  const { destination, files, level, password } = options;
+  const { destination, files, level, password, overwrite } = options;
   const args = ['a', destination, ...files];
 
   if (level) {
@@ -47,6 +49,10 @@ export async function sevenZip(options: ZipOptions): Promise<void> {
   if (password) {
     args.push(`-p${password}`);
     args.push('-mhe=on');
+  }
+
+  if (overwrite) {
+    return rimraf(destination).then(() => execute(command, args));
   }
 
   return execute(command, args);

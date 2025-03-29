@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/rdarida/cross-7zip/compare/v0.0.45...v1.0.0) (2025-03-29)
+
+
+### Features
+
+* implement overwrite feature ([1aa021b](https://github.com/rdarida/cross-7zip/commit/1aa021bb347de4f4f905f0139a4d9df5e025e33f))
+* implement overwrite for sevenZipSync ([58d3d07](https://github.com/rdarida/cross-7zip/commit/58d3d077a84cb788a68eb948665bd26dc9b2ab4a))
+
 ### [0.0.45](https://github.com/rdarida/cross-7zip/compare/v0.0.44...v0.0.45) (2025-03-29)
 
 ### [0.0.44](https://github.com/rdarida/cross-7zip/compare/v0.0.43...v0.0.44) (2025-03-27)

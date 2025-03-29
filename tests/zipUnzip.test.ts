@@ -8,6 +8,7 @@ import { sevenUnzip } from '../src/sevenUnzip';
 
 import {
   DATA_DIR,
+  OVERWRITE_TEST_ZIP,
   TEMP_DIR,
   TEST_FILES,
   TEST_PASSWORD,
@@ -30,6 +31,23 @@ describe('Test sevenZip and sevenUnzip functions', () => {
 
     const actual = readFileSync(destination);
     const expected = readFileSync(TEST_ZIP);
+    expect(actual).toEqual(expected);
+  });
+
+  it('should overwrite the zip file on each addition', async () => {
+    const destination = join(tempDir, 'overwrite test zip.7z');
+
+    for (const testFile of TEST_FILES) {
+      await sevenZip({
+        destination,
+        files: [testFile],
+        level: 1,
+        overwrite: true
+      });
+    }
+
+    const actual = readFileSync(destination);
+    const expected = readFileSync(OVERWRITE_TEST_ZIP);
     expect(actual).toEqual(expected);
   });
 
