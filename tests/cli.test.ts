@@ -26,13 +26,15 @@ describe('Test cli', () => {
   it('should create a ZIP file', () => {
     const destination = join(tempDir, 'test zip.7z');
 
-    executeSync('node', [
-      'dist/cli.js',
-      'zip',
-      destination,
-      ...TEST_FILES,
-      '--level=1'
-    ]);
+    for (const testFile of TEST_FILES) {
+      executeSync('node', [
+        'dist/cli.js',
+        'zip',
+        destination,
+        testFile,
+        '--level=1'
+      ]);
+    }
 
     const actual = readFileSync(destination);
     const expected = readFileSync(TEST_ZIP);
