@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/rdarida/cross-7zip/compare/v1.0.1...v1.1.0) (2025-03-31)
+
+
+### Features
+
+* implement SevenUnzip class ([b581676](https://github.com/rdarida/cross-7zip/commit/b58167651cf72926d7bc3c4dda65254246551dba))
+* implement SevenZip class ([34b5bf8](https://github.com/rdarida/cross-7zip/commit/34b5bf885b86c7ada2498ee99d4ec4ad9dbea0f4))
+
 ### [1.0.1](https://github.com/rdarida/cross-7zip/compare/v1.0.0...v1.0.1) (2025-03-31)
 
 ## [1.0.0](https://github.com/rdarida/cross-7zip/compare/v0.0.45...v1.0.0) (2025-03-29)
