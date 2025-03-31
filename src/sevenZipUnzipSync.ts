@@ -28,10 +28,8 @@ import { SevenUnzip } from './SevenUnzip';
  * }
  * ```
  *
- * @throws {Error} Will throw an error if the 7-Zip executable is not found.
- *
  * For additional examples, see the
- * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/zipUnzipSync.test.ts).
+ * [sevenZipUnzipSync.test.ts](https://github.com/rdarida/cross-7zip/blob/main/tests/sevenZipUnzipSync.test.ts).
  */
 export function sevenZipSync(options: ZipOptions): void {
   const sevenZip = new SevenZip(options);
@@ -65,7 +63,7 @@ export function sevenZipSync(options: ZipOptions): void {
  * ```
  *
  * For additional examples, see the
- * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/zipUnzipSync.test.ts).
+ * [sevenZipUnzipSync.test.ts](https://github.com/rdarida/cross-7zip/blob/main/tests/sevenZipUnzipSync.test.ts).
  */
 export function sevenUnzipSync(options: UnzipOptions): void {
   const sevenUnzip = new SevenUnzip(options);

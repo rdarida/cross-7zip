@@ -16,7 +16,7 @@
     "args": {
       "files": "Specifies the paths to the files to add to the zipped file",
       "destination": "Specifies the path to the output zipped file",
-      "level": "Compression level (1-9)",
+      "level": "Compression level, where 1 is the fastest and 9 is the best compression",
       "password": "Password for the archive",
       "overwrite": "Overwrites the existing ZIP file instead of updating it"
     }

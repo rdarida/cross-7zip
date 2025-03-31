@@ -60,7 +60,7 @@ describe('Test sevenZip and sevenUnzip functions', () => {
       .setFiles(TEST_FILES)
       .setLevel(5)
       .setPassword(password)
-      .withOverwrite();
+      .setOverwrite();
 
     await sevenZip.run();
 

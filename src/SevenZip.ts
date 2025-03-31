@@ -39,7 +39,7 @@ const DEFAULT_ZIP_OPTIONS: ZipOptions = {
  *       .setFiles(['document.txt', 'image.png', 'folder'])
  *       .setLevel(5)
  *       .setPassword('secure123')
- *       .overwrite();
+ *       .setOverwrite();
  *
  *     await zip.run();
  *     console.log('Archive created successfully.');
@@ -48,8 +48,6 @@ const DEFAULT_ZIP_OPTIONS: ZipOptions = {
  *   }
  * }
  * ```
- *
- * @throws {Error} Will throw an error if the 7-Zip executable is not found.
  *
  * For additional examples, see the
  * [zipUnzip.test.ts](https://github.com/rdarida/cross-7zip/blob/main/tests/zipUnzip.test.ts)
@@ -132,8 +130,8 @@ export class SevenZip {
    *
    * @returns The `SevenZip` instance for method chaining.
    */
-  public withOverwrite(): SevenZip {
-    this._options.overwrite = true;
+  public setOverwrite(overwrite = true): SevenZip {
+    this._options.overwrite = overwrite;
     return this;
   }
 

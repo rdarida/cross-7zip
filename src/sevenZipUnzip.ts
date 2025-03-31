@@ -29,7 +29,7 @@ import { SevenUnzip } from './SevenUnzip';
  * ```
  *
  * For additional examples, see the
- * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/zipUnzip.test.ts).
+ * [sevenZipUnzip.test.ts](https://github.com/rdarida/cross-7zip/blob/main/tests/sevenZipUnzip.test.ts).
  */
 export async function sevenZip(options: ZipOptions): Promise<void> {
   const sevenZip = new SevenZip(options);
@@ -63,7 +63,7 @@ export async function sevenZip(options: ZipOptions): Promise<void> {
  * ```
  *
  * For additional examples, see the
- * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/zipUnzip.test.ts).
+ * [sevenZipUnzip.test.ts](https://github.com/rdarida/cross-7zip/blob/main/tests/sevenZipUnzip.test.ts).
  */
 export async function sevenUnzip(options: UnzipOptions): Promise<void> {
   const sevenUnzip = new SevenUnzip(options);

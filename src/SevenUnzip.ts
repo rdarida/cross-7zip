@@ -28,9 +28,7 @@ const DEFAULT_UNZIP_OPTIONS: UnzipOptions = {
  *     console.error('An error occurred during extraction:', error);
  *   }
  * }
- * ```
  *
- * ```ts
  * import { SevenUnzip } from 'cross-7zip';
  *
  * async function extractArchive(): Promise<void> {
@@ -47,8 +45,6 @@ const DEFAULT_UNZIP_OPTIONS: UnzipOptions = {
  *   }
  * }
  * ```
- *
- * @throws {Error} Will throw an error if the 7-Zip executable is not found.
  *
  * For additional examples, see the
  * [zipUnzip.test.ts](https://github.com/rdarida/cross-7zip/blob/main/tests/zipUnzip.test.ts)
