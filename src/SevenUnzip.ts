@@ -47,9 +47,9 @@ const DEFAULT_UNZIP_OPTIONS: UnzipOptions = {
  * ```
  *
  * For additional examples, see the
- * [zipUnzip.test.ts](https://github.com/rdarida/cross-7zip/blob/main/tests/zipUnzip.test.ts)
+ * [sevenZipUnzip.test.ts](https://github.com/rdarida/cross-7zip/blob/main/tests/sevenZipUnzip.test.ts)
  * or
- * [zipUnzipSync.test.ts](https://github.com/rdarida/cross-7zip/blob/main/tests/zipUnzipSync.test.ts).
+ * [sevenZipUnzipSync.test.ts](https://github.com/rdarida/cross-7zip/blob/main/tests/sevenZipUnzipSync.test.ts).
  */
 export class SevenUnzip {
   private _options: UnzipOptions;
