@@ -1,4 +1,6 @@
 import {
+  SevenUnzip,
+  SevenZip,
   sevenUnzip,
   sevenUnzipSync,
   sevenZip,
@@ -6,6 +8,14 @@ import {
 } from '../src/index';
 
 describe('Test export', () => {
+  it('exports SevenUnzip', () => {
+    expect(SevenUnzip).toBeTruthy();
+  });
+
+  it('exports SevenZip', () => {
+    expect(SevenZip).toBeTruthy();
+  });
+
   it('exports sevenUnzip', () => {
     expect(sevenUnzip).toBeTruthy();
   });
