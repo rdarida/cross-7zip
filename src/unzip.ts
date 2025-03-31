@@ -1,5 +1,5 @@
 import { UnzipOptions } from './types';
-import { execute, getSevenZipPath } from './utils';
+import { SevenUnzip } from './SevenUnzip';
 
 /**
  * Extracts files from a specified zipped file **asynchronously**.
@@ -12,7 +12,7 @@ import { execute, getSevenZipPath } from './utils';
  * ```ts
  * import { UnzipOptions, sevenUnzip } from 'cross-7zip';
  *
- * async function extractFiles() {
+ * async function extractFiles(): Promise<void> {
  *   try {
  *     const unzipOptions: UnzipOptions = {
  *       archive: 'example.7z',
@@ -31,18 +31,6 @@ import { execute, getSevenZipPath } from './utils';
  * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/zipUnzip.test.ts).
  */
 export async function sevenUnzip(options: UnzipOptions): Promise<void> {
-  const command = getSevenZipPath();
-
-  if (!command) {
-    throw new Error('7-Zip executable not found.');
-  }
-
-  const { archive, destination, password } = options;
-  const args = ['x', archive, `-o${destination}`];
-
-  if (password) {
-    args.push(`-p${password}`);
-  }
-
-  return execute(command, args);
+  const sevenUnzip = new SevenUnzip(options);
+  return sevenUnzip.run();
 }

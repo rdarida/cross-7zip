@@ -12,7 +12,7 @@ import { SevenZip } from './SevenZip';
  * ```ts
  * import { ZipOptions, sevenZip } from 'cross-7zip';
  *
- * async function createArchive() {
+ * async function createArchive(): Promise<void> {
  *   try {
  *     const zipOptions: ZipOptions = {
  *       destination: 'example.7z',

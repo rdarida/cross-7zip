@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readFileSync } from 'fs';
 import { rimrafSync } from 'rimraf';
 
 import * as utils from '../src/utils';
+import { SevenUnzip } from '../src/SevenUnzip';
 import { sevenZipSync } from '../src/zipSync';
 import { sevenUnzipSync } from '../src/unzipSync';
 
@@ -57,11 +58,12 @@ describe('Test sevenZipSync and sevenUnzipSync functions', () => {
 
     sevenZipSync({ destination, files: TEST_FILES, password });
 
-    sevenUnzipSync({
-      archive: destination,
-      destination: tempDir,
-      password
-    });
+    const sevenUnzip = new SevenUnzip()
+      .setArchive(destination)
+      .setDestination(tempDir)
+      .setPassword(password);
+
+    sevenUnzip.runSync();
 
     [
       'test file 1.txt',

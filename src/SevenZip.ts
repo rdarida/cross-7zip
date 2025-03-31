@@ -11,10 +11,6 @@ const DEFAULT_ZIP_OPTIONS: ZipOptions = {
 /**
  * A wrapper class for creating 7-Zip archives using the command-line tool.
  *
- * This class allows users to compress multiple files into a `.7z` archive with
- * optional password protection, compression levels, and overwrite capabilities.
- * It supports both asynchronous and synchronous execution.
- *
  * @example
  * ```ts
  * import { SevenZip } from 'cross-7zip';
@@ -87,28 +83,14 @@ export class SevenZip {
   }
 
   /**
-   * Returns the destination path of the archive.
-   */
-  public get destination(): string {
-    return this._options.destination;
-  }
-
-  /**
-   * Returns whether the existing archive should be overwritten.
-   */
-  public get overwrite(): boolean {
-    return this._options.overwrite || false;
-  }
-
-  /**
    * Creates an instance of `SevenZip` with optional compression settings.
    *
-   * @param option Partial zip options (e.g., destination, files, compression level).
+   * @param options Partial zip options.
    */
-  constructor(option?: Partial<ZipOptions>) {
+  constructor(options?: Partial<ZipOptions>) {
     this._options = {
       ...DEFAULT_ZIP_OPTIONS,
-      ...option
+      ...options
     };
   }
 
@@ -167,14 +149,13 @@ export class SevenZip {
   }
 
   /**
-   * Executes the compression process **asynchronously**.
-   *
-   * @returns A promise that resolves when the archive is created.
+   * Runs the compression process **asynchronously**.
    *
    * @throws {Error} If the 7-Zip executable is not found.
    */
   public async run(): Promise<void> {
-    const { command, args, destination, overwrite } = this;
+    const { command, args } = this;
+    const { destination, overwrite } = this._options;
 
     if (!command) {
       throw new Error('7-Zip executable not found.');
@@ -188,12 +169,13 @@ export class SevenZip {
   }
 
   /**
-   * Executes the compression process **synchronously**.
+   * Runs the compression process **synchronously**.
    *
    * @throws {Error} If the 7-Zip executable is not found.
    */
   public runSync(): void {
-    const { command, args, destination, overwrite } = this;
+    const { command, args } = this;
+    const { destination, overwrite } = this._options;
 
     if (!command) {
       throw new Error('7-Zip executable not found.');

@@ -12,7 +12,7 @@ import { SevenZip } from './SevenZip';
  * ```ts
  * import { ZipOptions, sevenZipSync } from 'cross-7zip';
  *
- * function createArchiveSync() {
+ * function createArchiveSync(): void {
  *   try {
  *     const zipOptions: ZipOptions = {
  *       destination: 'example.7z',
@@ -26,6 +26,8 @@ import { SevenZip } from './SevenZip';
  *   }
  * }
  * ```
+ *
+ * @throws {Error} Will throw an error if the 7-Zip executable is not found.
  *
  * For additional examples, see the
  * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/zipUnzipSync.test.ts).
