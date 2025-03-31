@@ -26,40 +26,43 @@ Cross-platform 7-Zip for Node.js
 
 ## Installation
 
-### Package manager
+Install **cross-7zip** via [npm](https://www.npmjs.com/package/cross-7zip).
 
-Using npm:
-```bash
-npm install cross-7zip
+```sh
+npm i cross-7zip
 ```
 
-Using yarn:
-```bash
-yarn add cross-7zip
-```
+or
 
-Using pnpm:
-```bash
-pnpm add cross-7zip
+```sh
+npm i -g cross-7zip
 ```
 
 ## API
 
-### `sevenUnzip`
-Extracts files from a specified zipped file **asynchronously**.
-[Example](https://rdarida.github.io/cross-7zip/functions/sevenUnzip.html#example)
+### `SevenZip`
+A wrapper class for creating 7-Zip archives using the command-line tool.
+[Example](https://rdarida.github.io/cross-7zip/classes/SevenZip.html#example)
 
-### `sevenUnzipSync`
-Extracts files from a specified zipped file **synchronously**.
-[Example](https://rdarida.github.io/cross-7zip/functions/sevenUnzipSync.html#example)
+### `SevenUnzip`
+A wrapper class for extracting files from a 7-Zip archive using the command-line tool.
+[Example](https://rdarida.github.io/cross-7zip/classes/SevenUnzip.html#example)
 
 ### `sevenZip`
 Compresses multiple files into a zipped file **asynchronously**.
 [Example](https://rdarida.github.io/cross-7zip/functions/sevenZip.html#example)
 
+### `sevenUnzip`
+Extracts files from a specified zipped file **asynchronously**.
+[Example](https://rdarida.github.io/cross-7zip/functions/sevenUnzip.html#example)
+
 ### `sevenZipSync`
 Compresses multiple files into a zipped file **synchronously**.
 [Example](https://rdarida.github.io/cross-7zip/functions/sevenZipSync.html#example)
+
+### `sevenUnzipSync`
+Extracts files from a specified zipped file **synchronously**.
+[Example](https://rdarida.github.io/cross-7zip/functions/sevenUnzipSync.html#example)
 
 ## CLI Tool Usage
 

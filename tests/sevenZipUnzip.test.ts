@@ -3,8 +3,8 @@ import { existsSync, mkdirSync, readFileSync } from 'fs';
 import { rimrafSync } from 'rimraf';
 
 import * as utils from '../src/utils';
-import { sevenZipSync } from '../src/sevenZipSync';
-import { sevenUnzipSync } from '../src/sevenUnzipSync';
+import { SevenZip } from '../src/SevenZip';
+import { sevenZip, sevenUnzip } from '../src/sevenZipUnzip';
 
 import {
   DATA_DIR,
@@ -15,18 +15,18 @@ import {
   TEST_ZIP
 } from './constants';
 
-describe('Test sevenZipSync and sevenUnzipSync functions', () => {
-  const tempDir = join(TEMP_DIR, 'sync_test');
+describe('Test sevenZip and sevenUnzip functions', () => {
+  const tempDir = join(TEMP_DIR, 'async_test');
 
   beforeAll(() => {
     mkdirSync(tempDir, { recursive: true });
   });
 
-  it('creates a valid 7-Zip archive', () => {
+  it('creates a valid 7-Zip archive', async () => {
     const destination = join(tempDir, 'test zip.7z');
 
     for (const testFile of TEST_FILES) {
-      sevenZipSync({ destination, files: [testFile], level: 1 });
+      await sevenZip({ destination, files: [testFile], level: 1 });
     }
 
     const actual = readFileSync(destination);
@@ -34,11 +34,11 @@ describe('Test sevenZipSync and sevenUnzipSync functions', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('should overwrite the zip file on each addition', () => {
+  it('should overwrite the zip file on each addition', async () => {
     const destination = join(tempDir, 'overwrite test zip.7z');
 
     for (const testFile of TEST_FILES) {
-      sevenZipSync({
+      await sevenZip({
         destination,
         files: [testFile],
         level: 1,
@@ -51,13 +51,20 @@ describe('Test sevenZipSync and sevenUnzipSync functions', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('extracts files from a 7z archive', () => {
+  it('extracts files from a 7z archive', async () => {
     const destination = join(tempDir, 'test zip password.7z');
     const password = TEST_PASSWORD;
 
-    sevenZipSync({ destination, files: TEST_FILES, password });
+    const sevenZip = new SevenZip()
+      .setDestination(destination)
+      .setFiles(TEST_FILES)
+      .setLevel(5)
+      .setPassword(password)
+      .setOverwrite();
 
-    sevenUnzipSync({
+    await sevenZip.run();
+
+    await sevenUnzip({
       archive: destination,
       destination: tempDir,
       password
@@ -85,11 +92,11 @@ describe('Test sevenZipSync and sevenUnzipSync functions', () => {
   it('throws an error if 7-Zip executable is not found', async () => {
     jest.spyOn(utils, 'getSevenZipPath').mockReturnValue(undefined);
 
-    expect(() => sevenZipSync({ destination: '', files: [] })).toThrow(
+    await expect(sevenZip({ destination: '', files: [] })).rejects.toThrow(
       '7-Zip executable not found.'
     );
 
-    expect(() => sevenUnzipSync({ archive: '', destination: '' })).toThrow(
+    await expect(sevenUnzip({ archive: '', destination: '' })).rejects.toThrow(
       '7-Zip executable not found.'
     );
   });

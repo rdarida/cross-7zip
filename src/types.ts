@@ -23,7 +23,7 @@ export type ZipOptions = {
    */
   files: string[];
   /**
-   * Compression level (1-9)
+   * Compression level, where 1 is the fastest and 9 is the best compression.
    */
   level?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
   /**
