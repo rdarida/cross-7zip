@@ -1,7 +1,5 @@
-import { rimrafSync } from 'rimraf';
-
 import { ZipOptions } from './types';
-import { executeSync, getSevenZipPath } from './utils';
+import { SevenZip } from './SevenZip';
 
 /**
  * Compresses multiple files into a zipped file **synchronously**.
@@ -11,10 +9,10 @@ import { executeSync, getSevenZipPath } from './utils';
  * @throws {Error} Will throw an error if the 7-Zip executable is not found.
  *
  * @example
- * ```
+ * ```ts
  * import { ZipOptions, sevenZipSync } from 'cross-7zip';
  *
- * function createArchive() {
+ * function createArchiveSync() {
  *   try {
  *     const zipOptions: ZipOptions = {
  *       destination: 'example.7z',
@@ -33,27 +31,6 @@ import { executeSync, getSevenZipPath } from './utils';
  * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/zipUnzipSync.test.ts).
  */
 export function sevenZipSync(options: ZipOptions): void {
-  const command = getSevenZipPath();
-
-  if (!command) {
-    throw new Error('7-Zip executable not found.');
-  }
-
-  const { destination, files, level, password, overwrite } = options;
-  const args = ['a', destination, ...files];
-
-  if (level) {
-    args.push(`-mx${level}`);
-  }
-
-  if (password) {
-    args.push(`-p${password}`);
-    args.push('-mhe=on');
-  }
-
-  if (overwrite) {
-    rimrafSync(destination);
-  }
-
-  executeSync(command, args);
+  const sevenZip = new SevenZip(options);
+  sevenZip.runSync();
 }

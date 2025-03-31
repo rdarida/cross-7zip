@@ -1,3 +1,4 @@
+export * from './SevenZip';
 export * from './types';
 export * from './unzip';
 export * from './unzipSync';

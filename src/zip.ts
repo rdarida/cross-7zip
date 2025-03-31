@@ -1,7 +1,5 @@
-import { rimraf } from 'rimraf';
-
 import { ZipOptions } from './types';
-import { execute, getSevenZipPath } from './utils';
+import { SevenZip } from './SevenZip';
 
 /**
  * Compresses multiple files into a zipped file **asynchronously**.
@@ -11,7 +9,7 @@ import { execute, getSevenZipPath } from './utils';
  * @throws {Error} Will throw an error if the 7-Zip executable is not found.
  *
  * @example
- * ```
+ * ```ts
  * import { ZipOptions, sevenZip } from 'cross-7zip';
  *
  * async function createArchive() {
@@ -33,27 +31,6 @@ import { execute, getSevenZipPath } from './utils';
  * [test file](https://github.com/rdarida/cross-7zip/blob/main/tests/zipUnzip.test.ts).
  */
 export async function sevenZip(options: ZipOptions): Promise<void> {
-  const command = getSevenZipPath();
-
-  if (!command) {
-    throw new Error('7-Zip executable not found.');
-  }
-
-  const { destination, files, level, password, overwrite } = options;
-  const args = ['a', destination, ...files];
-
-  if (level) {
-    args.push(`-mx${level}`);
-  }
-
-  if (password) {
-    args.push(`-p${password}`);
-    args.push('-mhe=on');
-  }
-
-  if (overwrite) {
-    return rimraf(destination).then(() => execute(command, args));
-  }
-
-  return execute(command, args);
+  const sevenZip = new SevenZip(options);
+  return sevenZip.run();
 }
