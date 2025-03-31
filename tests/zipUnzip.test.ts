@@ -3,8 +3,8 @@ import { existsSync, mkdirSync, readFileSync } from 'fs';
 import { rimrafSync } from 'rimraf';
 
 import * as utils from '../src/utils';
-import { sevenZip } from '../src/sevenZip';
-import { sevenUnzip } from '../src/sevenUnzip';
+import { sevenZip } from '../src/zip';
+import { sevenUnzip } from '../src/unzip';
 
 import {
   DATA_DIR,
