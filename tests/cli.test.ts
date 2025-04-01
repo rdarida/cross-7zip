@@ -1,10 +1,14 @@
+import { ExecFileOptions, execFileSync } from 'child_process';
 import { join } from 'path';
 import { existsSync, mkdirSync, readFileSync } from 'fs';
 import { rimrafSync } from 'rimraf';
 
-import { executeSync } from '../src/utils';
-
 import { TEMP_DIR, TEST_FILES, TEST_ZIP } from './constants';
+
+const OPTIONS: ExecFileOptions = {
+  maxBuffer: Infinity,
+  windowsHide: true
+};
 
 describe('Test cli', () => {
   const tempDir = join(TEMP_DIR, 'cli_test');
@@ -14,7 +18,7 @@ describe('Test cli', () => {
   });
 
   it('should extract the contents of a ZIP file', () => {
-    executeSync('node', ['dist/cli.js', 'unzip', TEST_ZIP, tempDir]);
+    execFileSync('node', ['dist/cli.js', 'unzip', TEST_ZIP, tempDir], OPTIONS);
 
     const files = ['inner dir', 'test file 1.txt', 'test file 2.md'].map(file =>
       join(tempDir, file)
@@ -27,13 +31,11 @@ describe('Test cli', () => {
     const destination = join(tempDir, 'test zip.7z');
 
     for (const testFile of TEST_FILES) {
-      executeSync('node', [
-        'dist/cli.js',
-        'zip',
-        destination,
-        testFile,
-        '--level=1'
-      ]);
+      execFileSync(
+        'node',
+        ['dist/cli.js', 'zip', destination, testFile, '--level=1'],
+        OPTIONS
+      );
     }
 
     const actual = readFileSync(destination);

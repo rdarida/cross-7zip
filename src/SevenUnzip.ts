@@ -19,7 +19,7 @@ const DEFAULT_UNZIP_OPTIONS: UnzipOptions = {
  *     const sevenUnzip = new SevenUnzip({
  *       archive: 'example.7z',
  *       destination: 'outputFolder',
- *       password: 'secure123'
+ *       password: 'secure 123'
  *     });
  *
  *     sevenUnzip.runSync();
@@ -36,7 +36,7 @@ const DEFAULT_UNZIP_OPTIONS: UnzipOptions = {
  *     const sevenUnzip = new SevenUnzip()
  *       .setArchive('example.7z')
  *       .setDestination('outputFolder')
- *       .setPassword('secure123');
+ *       .setPassword('secure 123');
  *
  *     await sevenUnzip.run();
  *     console.log('Extraction completed successfully.');

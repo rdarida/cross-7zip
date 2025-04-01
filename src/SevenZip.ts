@@ -21,7 +21,7 @@ const DEFAULT_ZIP_OPTIONS: ZipOptions = {
  *       destination: 'example.7z',
  *       files: ['document.txt', 'image.png', 'folder'],
  *       level: 5,
- *       passwrod: 'secure123',
+ *       passwrod: 'secure 123',
  *       overwrite: true
  *     });
  *
@@ -38,7 +38,7 @@ const DEFAULT_ZIP_OPTIONS: ZipOptions = {
  *       .setDestination('example.7z')
  *       .setFiles(['document.txt', 'image.png', 'folder'])
  *       .setLevel(5)
- *       .setPassword('secure123')
+ *       .setPassword('secure 123')
  *       .setOverwrite();
  *
  *     await zip.run();
