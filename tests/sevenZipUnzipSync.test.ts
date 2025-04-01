@@ -83,6 +83,24 @@ describe('Test sevenZipSync and sevenUnzipSync functions', () => {
       });
   });
 
+  it('should generate the correct 7-Zip command string', () => {
+    const actual = new SevenUnzip()
+      .setArchive('example.7z')
+      .setDestination('outputFolder')
+      .setPassword('secure 123')
+      .toString();
+
+    const expected = [
+      `"${utils.getSevenZipPath()}"`,
+      '"x"',
+      '"example.7z"',
+      '"-ooutputFolder"',
+      '"-psecure 123"'
+    ].join(' ');
+
+    expect(actual).toBe(expected);
+  });
+
   it('throws an error if 7-Zip executable is not found', async () => {
     jest.spyOn(utils, 'getSevenZipPath').mockReturnValue(undefined);
 

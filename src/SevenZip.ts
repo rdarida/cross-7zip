@@ -21,7 +21,7 @@ const DEFAULT_ZIP_OPTIONS: ZipOptions = {
  *       destination: 'example.7z',
  *       files: ['document.txt', 'image.png', 'folder'],
  *       level: 5,
- *       passwrod: 'secure123',
+ *       passwrod: 'secure 123',
  *       overwrite: true
  *     });
  *
@@ -38,7 +38,7 @@ const DEFAULT_ZIP_OPTIONS: ZipOptions = {
  *       .setDestination('example.7z')
  *       .setFiles(['document.txt', 'image.png', 'folder'])
  *       .setLevel(5)
- *       .setPassword('secure123')
+ *       .setPassword('secure 123')
  *       .setOverwrite();
  *
  *     await zip.run();
@@ -144,6 +144,18 @@ export class SevenZip {
   public setPassword(password: string): SevenZip {
     this._options.password = password;
     return this;
+  }
+
+  /**
+   * Returns a string representation of the 7-Zip command with its arguments.
+   *
+   * This method constructs the full command-line string that would be executed,
+   * ensuring that each argument is properly quoted to handle paths with spaces.
+   *
+   * @returns The formatted command-line string.
+   */
+  public toString(): string {
+    return [this.command, ...this.args].map(v => `"${v}"`).join(' ');
   }
 
   /**

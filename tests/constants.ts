@@ -12,4 +12,4 @@ export const TEST_FILES = readdirSync(DATA_DIR).map(fileName =>
 export const TEST_ZIP = join(TEMP_DIR, 'test zip.7z');
 export const OVERWRITE_TEST_ZIP = join(TEMP_DIR, 'overwrite test zip.7z');
 
-export const TEST_PASSWORD = 'yxASqw12';
+export const TEST_PASSWORD = 'secure 123';

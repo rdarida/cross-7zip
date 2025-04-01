@@ -19,7 +19,7 @@ const DEFAULT_UNZIP_OPTIONS: UnzipOptions = {
  *     const sevenUnzip = new SevenUnzip({
  *       archive: 'example.7z',
  *       destination: 'outputFolder',
- *       password: 'secure123'
+ *       password: 'secure 123'
  *     });
  *
  *     sevenUnzip.runSync();
@@ -29,14 +29,12 @@ const DEFAULT_UNZIP_OPTIONS: UnzipOptions = {
  *   }
  * }
  *
- * import { SevenUnzip } from 'cross-7zip';
- *
  * async function extractArchive(): Promise<void> {
  *   try {
  *     const sevenUnzip = new SevenUnzip()
  *       .setArchive('example.7z')
  *       .setDestination('outputFolder')
- *       .setPassword('secure123');
+ *       .setPassword('secure 123');
  *
  *     await sevenUnzip.run();
  *     console.log('Extraction completed successfully.');
@@ -118,6 +116,18 @@ export class SevenUnzip {
   public setPassword(password: string): SevenUnzip {
     this._options.password = password;
     return this;
+  }
+
+  /**
+   * Returns a string representation of the 7-Zip command with its arguments.
+   *
+   * This method constructs the full command-line string that would be executed,
+   * ensuring that each argument is properly quoted to handle paths with spaces.
+   *
+   * @returns The formatted command-line string.
+   */
+  public toString(): string {
+    return [this.command, ...this.args].map(v => `"${v}"`).join(' ');
   }
 
   /**
