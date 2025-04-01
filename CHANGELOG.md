@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/rdarida/cross-7zip/compare/v1.1.1...v1.2.0) (2025-04-01)
+
+
+### Features
+
+* implement toString methods for SevenZip and SevenUnzip classes ([41a8558](https://github.com/rdarida/cross-7zip/commit/41a8558a8b3ae0de18b140528b563a71d100180a))
+
 ### [1.1.1](https://github.com/rdarida/cross-7zip/compare/v1.1.0...v1.1.1) (2025-03-31)
 
 
