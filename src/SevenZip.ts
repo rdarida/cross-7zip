@@ -147,6 +147,18 @@ export class SevenZip {
   }
 
   /**
+   * Returns a string representation of the 7-Zip command with its arguments.
+   *
+   * This method constructs the full command-line string that would be executed,
+   * ensuring that each argument is properly quoted to handle paths with spaces.
+   *
+   * @returns The formatted command-line string.
+   */
+  public toString(): string {
+    return [this.command, ...this.args].map(v => `"${v}"`).join(' ');
+  }
+
+  /**
    * Runs the compression process **asynchronously**.
    *
    * @throws {Error} If the 7-Zip executable is not found.
