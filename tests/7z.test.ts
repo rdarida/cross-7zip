@@ -44,6 +44,13 @@ describe('Test 7z executable', () => {
     expect(ret.endsWith('-y : assume Yes on all queries')).toBe(true);
   });
 
+  // Zip tests
+  it('should throw an error, because of missing zip parameters', () => {
+    if (!seven) return;
+
+    expect(() => execFileSync(seven, ['a'], OPTIONS)).toThrow();
+  });
+
   afterAll(() => {
     rimrafSync(tempDir);
   });
