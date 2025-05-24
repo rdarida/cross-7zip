@@ -10,6 +10,24 @@ const OPTIONS: ExecFileOptions = {
   windowsHide: true
 };
 
+/**
+ * * 7z
+ *
+ * ! 7z a
+ * * 7z a archive.7z
+ * * 7z a folder/archive.7z
+ * * 7z a no_folder/archive.7z
+ * ! 7z a no_folder/archive.7z no_file.txt
+ * ! 7z a no_folder/archive.7z no_file.txt file.md
+ * * 7z a no_folder/archive.7z folder file.txt file.md -ppassword
+ *
+ * ! 7z x
+ * ! 7z x no_archive.7z
+ * * 7z x archive.7z
+ * * 7z x archive.7z -ofolder
+ * ! 7z x archive.7z -ofolder -pwrongpassword
+ * * 7z x archive.7z -ofolder -ppassword
+ */
 describe('Test cli', () => {
   const tempDir = join(TEMP_DIR, 'cli_test');
 
