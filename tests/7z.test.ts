@@ -51,6 +51,23 @@ describe('Test 7z executable', () => {
     expect(() => execFileSync(seven, ['a'], OPTIONS)).toThrow();
   });
 
+  it('should throw an error, because of missing file', () => {
+    if (!seven) return;
+
+    const destination = join(tempDir, 'archive.7z');
+
+    expect(() =>
+      execFileSync(seven, ['a', destination, 'no_file.txt'])
+    ).toThrow();
+  });
+
+  // Unzip tests
+  it('should throw an error, because of missing unzip parameters', () => {
+    if (!seven) return;
+
+    expect(() => execFileSync(seven, ['x'], OPTIONS)).toThrow();
+  });
+
   afterAll(() => {
     rimrafSync(tempDir);
   });
