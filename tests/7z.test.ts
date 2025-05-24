@@ -57,7 +57,7 @@ describe('Test 7z executable', () => {
     const destination = join(tempDir, 'archive.7z');
 
     expect(() =>
-      execFileSync(seven, ['a', destination, 'no_file.txt'])
+      execFileSync(seven, ['a', destination, 'no_file.txt'], OPTIONS)
     ).toThrow();
   });
 
@@ -66,6 +66,14 @@ describe('Test 7z executable', () => {
     if (!seven) return;
 
     expect(() => execFileSync(seven, ['x'], OPTIONS)).toThrow();
+  });
+
+  it('should throw an error, because of missing archive', () => {
+    if (!seven) return;
+
+    expect(() =>
+      execFileSync(seven, ['x', 'no_archive.7z'], OPTIONS)
+    ).toThrow();
   });
 
   afterAll(() => {
