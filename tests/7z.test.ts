@@ -1,17 +1,11 @@
 import { ExecFileOptions, execFileSync } from 'child_process';
 import { join } from 'path';
-import { existsSync, mkdirSync, readFileSync } from 'fs';
+import { mkdirSync } from 'fs';
 import { rimrafSync } from 'rimraf';
 
 import { getSevenZipPath } from '../src/utils';
 
-import {
-  PASSWORD_TEST_ZIP,
-  TEMP_DIR,
-  TEST_FILES,
-  TEST_PASSWORD,
-  TEST_ZIP
-} from './constants';
+import { PASSWORD_TEST_ZIP, TEMP_DIR } from './constants';
 
 /**
  * * 7z
@@ -28,6 +22,7 @@ import {
  * ! 7z x no_archive.7z
  * * 7z x archive.7z
  * * 7z x archive.7z -ofolder
+ * ! 7z x archive.7z -ofolder -p
  * ! 7z x archive.7z -ofolder -pwrongpassword
  * * 7z x archive.7z -ofolder -ppassword
  */
@@ -88,6 +83,16 @@ describe('Test 7z executable', () => {
 
     const archive = join(PASSWORD_TEST_ZIP);
     expect(() => execFileSync(seven, ['x', archive], options)).toThrow();
+  });
+
+  it('should throw an error, because of wrong password', () => {
+    if (!seven) return;
+
+    const archive = join(PASSWORD_TEST_ZIP);
+
+    expect(() =>
+      execFileSync(seven, ['x', archive, '-pwrongPassword'], options)
+    ).toThrow();
   });
 
   afterAll(() => {
