@@ -5,13 +5,20 @@ import { execSync } from 'child_process';
 import { getSevenZipPath } from '../src/utils';
 
 import {
+  DATA_DIR,
   OVERWRITE_TEST_ZIP,
+  PASSWORD_TEST_ZIP,
   TEMP_DIR,
   TEST_FILES,
+  TEST_PASSWORD,
   TEST_ZIP
 } from './constants';
 
 export default function globalSetup(): void {
+  const seven = getSevenZipPath();
+
+  if (!seven) return;
+
   if (existsSync(TEMP_DIR)) {
     rimrafSync(TEMP_DIR);
   }
@@ -19,17 +26,21 @@ export default function globalSetup(): void {
   mkdirSync(TEMP_DIR, { recursive: true });
 
   TEST_FILES.forEach(testFile => {
-    execSync(`${getSevenZipPath()} a -mx1 "${TEST_ZIP}" "${testFile}"`, {
+    execSync(`${seven} a -mx1 "${TEST_ZIP}" "${testFile}"`, {
       cwd: TEMP_DIR
     });
   });
 
   const lastFile = TEST_FILES[TEST_FILES.length - 1];
 
+  execSync(`${seven} a -mx1 "${OVERWRITE_TEST_ZIP}" "${lastFile}"`, {
+    cwd: TEMP_DIR
+  });
+
   execSync(
-    `${getSevenZipPath()} a -mx1 "${OVERWRITE_TEST_ZIP}" "${lastFile}"`,
+    `${seven} a -mx1 -p"${TEST_PASSWORD}" -mhe=on "${PASSWORD_TEST_ZIP}"`,
     {
-      cwd: TEMP_DIR
+      cwd: DATA_DIR
     }
   );
 }
