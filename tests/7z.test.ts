@@ -50,9 +50,14 @@ const OPTIONS: ExecFileOptions = {
 
   // ! 7z a <tempDir>/archive.7z <cwd>/no_file.txt
   it('should throw an error, because of missing file', () => {
+    const errorMessage =
+      process.platform === 'win32'
+        ? 'The system cannot find the file specified'
+        : 'No such file or directory';
+
     expect(() =>
       execFileSync(SEVEN, ['a', zipDest, 'no_file.txt'], OPTIONS)
-    ).toThrow('The system cannot find the file specified');
+    ).toThrow(errorMessage);
   });
 
   // ! 7z x
@@ -64,8 +69,13 @@ const OPTIONS: ExecFileOptions = {
 
   // ! 7z x <cwd>/no_archive.7z [cwd]
   it('should throw an error, because of missing archive', () => {
+    const errorMessage =
+      process.platform === 'win32'
+        ? 'The system cannot find the file specified'
+        : 'No such file or directory';
+
     expect(() => execFileSync(SEVEN, ['x', 'no_archive.7z'], OPTIONS)).toThrow(
-      'The system cannot find the file specified'
+      errorMessage
     );
   });
 
