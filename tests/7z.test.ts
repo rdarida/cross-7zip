@@ -7,6 +7,8 @@ import { getSevenZipPath } from '../src/utils';
 
 import { PASSWORD_TEST_ZIP, TEMP_DIR } from './constants';
 
+const SEVEN = getSevenZipPath() || '';
+
 /**
  * * 7z
  *
@@ -26,8 +28,7 @@ import { PASSWORD_TEST_ZIP, TEMP_DIR } from './constants';
  * ! 7z x archive.7z -ofolder -pwrongpassword
  * * 7z x archive.7z -ofolder -ppassword
  */
-describe('Test 7z executable', () => {
-  const seven = getSevenZipPath();
+(SEVEN ? describe : xdescribe)('Test 7z executable', () => {
   const tempDir = join(TEMP_DIR, '7z_test');
   const options: ExecFileOptions = {
     maxBuffer: Infinity,
@@ -40,58 +41,44 @@ describe('Test 7z executable', () => {
   });
 
   it('should print 7z help', () => {
-    if (!seven) return;
-
-    const ret = execFileSync(seven, [], options).toString().trim();
+    const ret = execFileSync(SEVEN, [], options).toString().trim();
     expect(ret.endsWith('-y : assume Yes on all queries')).toBe(true);
   });
 
   // Zip tests
   it('should throw an error, because of missing zip parameters', () => {
-    if (!seven) return;
-
-    expect(() => execFileSync(seven, ['a'], options)).toThrow();
+    expect(() => execFileSync(SEVEN, ['a'], options)).toThrow();
   });
 
   it('should throw an error, because of missing file', () => {
-    if (!seven) return;
-
     const destination = join(tempDir, 'archive.7z');
 
     expect(() =>
-      execFileSync(seven, ['a', destination, 'no_file.txt'], options)
+      execFileSync(SEVEN, ['a', destination, 'no_file.txt'], options)
     ).toThrow();
   });
 
   // Unzip tests
   it('should throw an error, because of missing unzip parameters', () => {
-    if (!seven) return;
-
-    expect(() => execFileSync(seven, ['x'], options)).toThrow();
+    expect(() => execFileSync(SEVEN, ['x'], options)).toThrow();
   });
 
   it('should throw an error, because of missing archive', () => {
-    if (!seven) return;
-
     expect(() =>
-      execFileSync(seven, ['x', 'no_archive.7z'], options)
+      execFileSync(SEVEN, ['x', 'no_archive.7z'], options)
     ).toThrow();
   });
 
   it('should throw an error, because of missing password', () => {
-    if (!seven) return;
-
     const archive = join(PASSWORD_TEST_ZIP);
-    expect(() => execFileSync(seven, ['x', archive], options)).toThrow();
+    expect(() => execFileSync(SEVEN, ['x', archive], options)).toThrow();
   });
 
   it('should throw an error, because of wrong password', () => {
-    if (!seven) return;
-
     const archive = join(PASSWORD_TEST_ZIP);
 
     expect(() =>
-      execFileSync(seven, ['x', archive, '-pwrongPassword'], options)
+      execFileSync(SEVEN, ['x', archive, '-pwrongPassword'], options)
     ).toThrow();
   });
 
