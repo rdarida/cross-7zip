@@ -36,7 +36,7 @@ const SEVEN = getSevenZipPath() || '';
     cwd: tempDir
   };
 
-  beforeAll(() => {
+  beforeEach(() => {
     mkdirSync(tempDir, { recursive: true });
   });
 
@@ -82,7 +82,7 @@ const SEVEN = getSevenZipPath() || '';
     ).toThrow();
   });
 
-  afterAll(() => {
+  afterEach(() => {
     rimrafSync(tempDir);
   });
 });
