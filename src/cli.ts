@@ -54,10 +54,10 @@ yargs
           type: 'string'
         })
         .positional('files', {
-          demandOption: true,
           describe: texts.zip.args.files,
           type: 'string',
-          array: true
+          array: true,
+          default: [process.cwd()]
         })
         .option('level', {
           alias: 'l',
