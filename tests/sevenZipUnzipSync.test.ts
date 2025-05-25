@@ -7,8 +7,8 @@ import { SevenUnzip } from '../src/SevenUnzip';
 import { sevenZipSync, sevenUnzipSync } from '../src/sevenZipUnzipSync';
 
 import {
-  DATA_DIR,
   OVERWRITE_TEST_ZIP,
+  TEMP_DATA_DIR,
   TEMP_DIR,
   TEST_FILES,
   TEST_PASSWORD,
@@ -72,7 +72,7 @@ describe('Test sevenZipSync and sevenUnzipSync functions', () => {
     ]
       .map(file => ({
         actual: join(tempDir, file),
-        expected: join(DATA_DIR, file)
+        expected: join(TEMP_DATA_DIR, file)
       }))
       .forEach(file => {
         expect(existsSync(file.actual)).toBeTruthy();

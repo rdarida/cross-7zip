@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync } from 'fs';
+import { cpSync, existsSync, mkdirSync } from 'fs';
 import { rimrafSync } from 'rimraf';
 import { execSync } from 'child_process';
 
@@ -8,6 +8,7 @@ import {
   DATA_DIR,
   OVERWRITE_TEST_ZIP,
   PASSWORD_TEST_ZIP,
+  TEMP_DATA_DIR,
   TEMP_DIR,
   TEST_FILES,
   TEST_PASSWORD,
@@ -23,7 +24,8 @@ export default function globalSetup(): void {
     rimrafSync(TEMP_DIR);
   }
 
-  mkdirSync(TEMP_DIR, { recursive: true });
+  mkdirSync(TEMP_DATA_DIR, { recursive: true });
+  cpSync(DATA_DIR, TEMP_DATA_DIR, { recursive: true });
 
   TEST_FILES.forEach(testFile => {
     execSync(`${seven} a -mx1 "${TEST_ZIP}" "${testFile}"`, {
