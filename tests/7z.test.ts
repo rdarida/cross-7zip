@@ -20,28 +20,10 @@ const OPTIONS: ExecFileOptions = {
   cwd: TEMP_DATA_DIR
 } as const;
 
-/**
- * * 7z
- *
- * ! 7z a
- * * 7z a archive.7z
- * * 7z a folder/archive.7z
- * * 7z a no_folder/archive.7z
- * ! 7z a no_folder/archive.7z no_file.txt
- * ! 7z a no_folder/archive.7z no_file.txt file.md
- * * 7z a no_folder/archive.7z folder file.txt file.md -ppassword
- *
- * ! 7z x
- * ! 7z x no_archive.7z
- * * 7z x archive.7z
- * * 7z x archive.7z -ofolder
- * ! 7z x archive.7z -ofolder -p
- * ! 7z x archive.7z -ofolder -pwrongpassword
- * * 7z x archive.7z -ofolder -ppassword
- */
 (SEVEN ? describe : xdescribe)('Test 7z executable', () => {
   const tempDir = join(TEMP_DIR, '7z_test');
   const zipDest = join(tempDir, 'archive.7z');
+  const unzipDest = join(tempDir, 'folder');
 
   beforeEach(() => {
     mkdirSync(tempDir, { recursive: true });
@@ -93,22 +75,37 @@ const OPTIONS: ExecFileOptions = {
     expect(existsSync(join(tempDir, 'inner dir'))).toBe(true);
   });
 
-  it('should throw an error, because of missing password', () => {
-    const archive = join(PASSWORD_TEST_ZIP);
-    expect(() => execFileSync(SEVEN, ['x', archive], OPTIONS)).toThrow(
-      'Break signaled'
-    );
+  // * 7z x <TEMP_DIR>/test zip.7z <cwd>/folder
+  it('should extract archive to cwd', () => {
+    execFileSync(SEVEN, ['x', TEST_ZIP, unzipDest], OPTIONS);
+    expect(existsSync(unzipDest)).toBe(false);
   });
 
-  it('should throw an error, because of wrong password', () => {
-    const archive = join(PASSWORD_TEST_ZIP);
-
+  // ! 7z x <PASSWORD_TEST_ZIP>
+  it('should throw an error, because of missing password', () => {
     expect(() =>
-      execFileSync(SEVEN, ['x', archive, '-pwrongPassword'], OPTIONS)
+      execFileSync(SEVEN, ['x', PASSWORD_TEST_ZIP], OPTIONS)
+    ).toThrow('Break signaled');
+  });
+
+  // ! 7z x <PASSWORD_TEST_ZIP> -pwrongPasswrod
+  it('should throw an error, because of wrong password', () => {
+    expect(() =>
+      execFileSync(SEVEN, ['x', PASSWORD_TEST_ZIP, '-pwrongPassword'], OPTIONS)
     ).toThrow('Cannot open encrypted archive. Wrong password?');
   });
 
+  // * 7z x <PASSWORD_TEST_ZIP> [cwd] -p"secure 123"
+  it('should extract password protected archive to cwd', () => {
+    execFileSync(SEVEN, ['x', PASSWORD_TEST_ZIP, '-psecure 123'], {
+      ...OPTIONS,
+      cwd: tempDir
+    });
+
+    expect(existsSync(join(tempDir, 'inner dir'))).toBe(true);
+  });
+
   afterEach(() => {
-    // rimrafSync(tempDir);
+    rimrafSync(tempDir);
   });
 });
