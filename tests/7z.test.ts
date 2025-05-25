@@ -1,101 +1,121 @@
 import { ExecFileOptions, execFileSync } from 'child_process';
 import { join } from 'path';
-import { mkdirSync } from 'fs';
+import { existsSync, mkdirSync } from 'fs';
 import { rimrafSync } from 'rimraf';
 
 import { getSevenZipPath } from '../src/utils';
 
-import { PASSWORD_TEST_ZIP, TEMP_DIR } from './constants';
+import {
+  PASSWORD_TEST_ZIP,
+  TEMP_DATA_DIR,
+  TEMP_DIR,
+  TEST_ZIP
+} from './constants';
 
-/**
- * * 7z
- *
- * ! 7z a
- * * 7z a archive.7z
- * * 7z a folder/archive.7z
- * * 7z a no_folder/archive.7z
- * ! 7z a no_folder/archive.7z no_file.txt
- * ! 7z a no_folder/archive.7z no_file.txt file.md
- * * 7z a no_folder/archive.7z folder file.txt file.md -ppassword
- *
- * ! 7z x
- * ! 7z x no_archive.7z
- * * 7z x archive.7z
- * * 7z x archive.7z -ofolder
- * ! 7z x archive.7z -ofolder -p
- * ! 7z x archive.7z -ofolder -pwrongpassword
- * * 7z x archive.7z -ofolder -ppassword
- */
-describe('Test 7z executable', () => {
-  const seven = getSevenZipPath();
+const SEVEN = getSevenZipPath() || '';
+
+const OPTIONS: ExecFileOptions = {
+  maxBuffer: Infinity,
+  windowsHide: true,
+  cwd: TEMP_DATA_DIR
+} as const;
+
+(SEVEN ? describe : xdescribe)('Test 7z executable', () => {
   const tempDir = join(TEMP_DIR, '7z_test');
-  const options: ExecFileOptions = {
-    maxBuffer: Infinity,
-    windowsHide: true,
-    cwd: tempDir
-  };
+  const zipDest = join(tempDir, 'archive.7z');
+  const unzipDest = join(tempDir, 'folder');
 
-  beforeAll(() => {
+  beforeEach(() => {
     mkdirSync(tempDir, { recursive: true });
   });
 
+  // * 7z
   it('should print 7z help', () => {
-    if (!seven) return;
-
-    const ret = execFileSync(seven, [], options).toString().trim();
+    const ret = execFileSync(SEVEN, [], OPTIONS).toString().trim();
     expect(ret.endsWith('-y : assume Yes on all queries')).toBe(true);
   });
 
-  // Zip tests
+  // ! 7z a
   it('should throw an error, because of missing zip parameters', () => {
-    if (!seven) return;
-
-    expect(() => execFileSync(seven, ['a'], options)).toThrow();
+    expect(() => execFileSync(SEVEN, ['a'], OPTIONS)).toThrow(
+      'Cannot find archive name'
+    );
   });
 
+  // * 7z a <tempDir>/archive.7z [cwd]
+  it('should create an archive from cwd', () => {
+    execFileSync(SEVEN, ['a', zipDest], OPTIONS);
+    expect(existsSync(zipDest)).toBe(true);
+  });
+
+  // ! 7z a <tempDir>/archive.7z <cwd>/no_file.txt
   it('should throw an error, because of missing file', () => {
-    if (!seven) return;
-
-    const destination = join(tempDir, 'archive.7z');
+    const errorMessage =
+      process.platform === 'win32'
+        ? 'The system cannot find the file specified'
+        : 'No such file or directory';
 
     expect(() =>
-      execFileSync(seven, ['a', destination, 'no_file.txt'], options)
-    ).toThrow();
+      execFileSync(SEVEN, ['a', zipDest, 'no_file.txt'], OPTIONS)
+    ).toThrow(errorMessage);
   });
 
-  // Unzip tests
+  // ! 7z x
   it('should throw an error, because of missing unzip parameters', () => {
-    if (!seven) return;
-
-    expect(() => execFileSync(seven, ['x'], options)).toThrow();
+    expect(() => execFileSync(SEVEN, ['x'], OPTIONS)).toThrow(
+      'Cannot find archive name'
+    );
   });
 
+  // ! 7z x <cwd>/no_archive.7z [cwd]
   it('should throw an error, because of missing archive', () => {
-    if (!seven) return;
+    const errorMessage =
+      process.platform === 'win32'
+        ? 'The system cannot find the file specified'
+        : 'No such file or directory';
 
-    expect(() =>
-      execFileSync(seven, ['x', 'no_archive.7z'], options)
-    ).toThrow();
+    expect(() => execFileSync(SEVEN, ['x', 'no_archive.7z'], OPTIONS)).toThrow(
+      errorMessage
+    );
   });
 
+  // * 7z x <TEMP_DIR>/test zip.7z [cwd]
+  it('should extract archive to cwd', () => {
+    execFileSync(SEVEN, ['x', TEST_ZIP], { ...OPTIONS, cwd: tempDir });
+    expect(existsSync(join(tempDir, 'inner dir'))).toBe(true);
+  });
+
+  // * 7z x <TEMP_DIR>/test zip.7z <cwd>/folder
+  it('should extract archive to cwd', () => {
+    execFileSync(SEVEN, ['x', TEST_ZIP, unzipDest], OPTIONS);
+    expect(existsSync(unzipDest)).toBe(false);
+  });
+
+  // ! 7z x <PASSWORD_TEST_ZIP>
   it('should throw an error, because of missing password', () => {
-    if (!seven) return;
-
-    const archive = join(PASSWORD_TEST_ZIP);
-    expect(() => execFileSync(seven, ['x', archive], options)).toThrow();
-  });
-
-  it('should throw an error, because of wrong password', () => {
-    if (!seven) return;
-
-    const archive = join(PASSWORD_TEST_ZIP);
-
     expect(() =>
-      execFileSync(seven, ['x', archive, '-pwrongPassword'], options)
-    ).toThrow();
+      execFileSync(SEVEN, ['x', PASSWORD_TEST_ZIP], OPTIONS)
+    ).toThrow('Break signaled');
   });
 
-  afterAll(() => {
+  // ! 7z x <PASSWORD_TEST_ZIP> -pwrongPasswrod
+  it('should throw an error, because of wrong password', () => {
+    expect(() =>
+      execFileSync(SEVEN, ['x', PASSWORD_TEST_ZIP, '-pwrongPassword'], OPTIONS)
+    ).toThrow('Cannot open encrypted archive. Wrong password?');
+  });
+
+  // * 7z x <PASSWORD_TEST_ZIP> [cwd] -p"secure 123"
+  it('should extract password protected archive to cwd', () => {
+    execFileSync(SEVEN, ['x', PASSWORD_TEST_ZIP, '-psecure 123'], {
+      ...OPTIONS,
+      cwd: tempDir
+    });
+
+    expect(existsSync(join(tempDir, 'inner dir'))).toBe(true);
+  });
+
+  afterEach(() => {
     rimrafSync(tempDir);
   });
 });
