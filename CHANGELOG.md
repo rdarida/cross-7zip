@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/rdarida/cross-7zip/compare/v1.2.1...v1.3.0) (2025-05-25)
+
+
+### Features
+
+* optional files zip parameter with cwd as default value ([4f6d04a](https://github.com/rdarida/cross-7zip/commit/4f6d04af710f157d812afda3db875b267bed3c43))
+
 ### [1.2.1](https://github.com/rdarida/cross-7zip/compare/v1.2.0...v1.2.1) (2025-05-24)
 
 ## [1.2.0](https://github.com/rdarida/cross-7zip/compare/v1.1.1...v1.2.0) (2025-04-01)
