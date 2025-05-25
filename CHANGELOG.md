@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.2](https://github.com/rdarida/cross-7zip/compare/v1.3.1...v1.3.2) (2025-05-25)
+
+
+### Bug Fixes
+
+* add platform specific error messages ([5e1fcbe](https://github.com/rdarida/cross-7zip/commit/5e1fcbed514002f49ef657816fd2e65fd8016b23))
+
 ### [1.3.1](https://github.com/rdarida/cross-7zip/compare/v1.3.0...v1.3.1) (2025-05-25)
 
 ## [1.3.0](https://github.com/rdarida/cross-7zip/compare/v1.2.1...v1.3.0) (2025-05-25)
