@@ -40,14 +40,17 @@ const SEVEN = getSevenZipPath() || '';
     mkdirSync(tempDir, { recursive: true });
   });
 
+  // * 7z
   it('should print 7z help', () => {
     const ret = execFileSync(SEVEN, [], options).toString().trim();
     expect(ret.endsWith('-y : assume Yes on all queries')).toBe(true);
   });
 
-  // Zip tests
+  // ! 7z a
   it('should throw an error, because of missing zip parameters', () => {
-    expect(() => execFileSync(SEVEN, ['a'], options)).toThrow();
+    expect(() => execFileSync(SEVEN, ['a'], options)).toThrow(
+      'Cannot find archive name'
+    );
   });
 
   it('should throw an error, because of missing file', () => {
@@ -55,23 +58,27 @@ const SEVEN = getSevenZipPath() || '';
 
     expect(() =>
       execFileSync(SEVEN, ['a', destination, 'no_file.txt'], options)
-    ).toThrow();
+    ).toThrow('The system cannot find the file specified');
   });
 
-  // Unzip tests
+  // ! 7z x
   it('should throw an error, because of missing unzip parameters', () => {
-    expect(() => execFileSync(SEVEN, ['x'], options)).toThrow();
+    expect(() => execFileSync(SEVEN, ['x'], options)).toThrow(
+      'Cannot find archive name'
+    );
   });
 
   it('should throw an error, because of missing archive', () => {
-    expect(() =>
-      execFileSync(SEVEN, ['x', 'no_archive.7z'], options)
-    ).toThrow();
+    expect(() => execFileSync(SEVEN, ['x', 'no_archive.7z'], options)).toThrow(
+      'The system cannot find the file specified'
+    );
   });
 
   it('should throw an error, because of missing password', () => {
     const archive = join(PASSWORD_TEST_ZIP);
-    expect(() => execFileSync(SEVEN, ['x', archive], options)).toThrow();
+    expect(() => execFileSync(SEVEN, ['x', archive], options)).toThrow(
+      'Break signaled'
+    );
   });
 
   it('should throw an error, because of wrong password', () => {
@@ -79,7 +86,7 @@ const SEVEN = getSevenZipPath() || '';
 
     expect(() =>
       execFileSync(SEVEN, ['x', archive, '-pwrongPassword'], options)
-    ).toThrow();
+    ).toThrow('Cannot open encrypted archive. Wrong password?');
   });
 
   afterEach(() => {
