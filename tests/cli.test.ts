@@ -72,6 +72,13 @@ describe('Test cli', () => {
     ).toThrow(errorMessage);
   });
 
+  // ! seven unzip <cwd>/not_an_archive [cwd]
+  it('should throw an error, because the input is not an archive', () => {
+    expect(() =>
+      execFileSync('node', [SEVEN, 'unzip', 'test file 1.txt'], OPTIONS)
+    ).toThrow('Cannot open the file as archive');
+  });
+
   afterEach(() => {
     rimrafSync(tempDir);
   });
