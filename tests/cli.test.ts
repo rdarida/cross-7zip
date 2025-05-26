@@ -41,6 +41,18 @@ describe('Test cli', () => {
     expect(existsSync(zipDest)).toBe(true);
   });
 
+  // ! 7z a <tempDir>/archive.7z <cwd>/no_file.txt
+  it('should throw an error, because of missing file', () => {
+    const errorMessage =
+      process.platform === 'win32'
+        ? 'The system cannot find the file specified'
+        : 'No such file or directory';
+
+    expect(() =>
+      execFileSync('node', [SEVEN, 'zip', zipDest, 'no_file.txt'], OPTIONS)
+    ).toThrow(errorMessage);
+  });
+
   // ! seven unzip
   it('should print unzip help', () => {
     expect(() => execFileSync('node', [SEVEN, 'unzip'], OPTIONS)).toThrow(
