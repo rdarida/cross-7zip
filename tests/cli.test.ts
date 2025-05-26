@@ -1,17 +1,21 @@
 import { ExecFileOptions, execFileSync } from 'child_process';
 import { join } from 'path';
-import { mkdirSync } from 'fs';
+import { existsSync, mkdirSync } from 'fs';
 import { rimrafSync } from 'rimraf';
 
-import { TEMP_DIR } from './constants';
+import { TEMP_DATA_DIR, TEMP_DIR } from './constants';
+
+const SEVEN = join(__dirname, '..', 'dist', 'cli.js');
 
 const OPTIONS: ExecFileOptions = {
   maxBuffer: Infinity,
-  windowsHide: true
+  windowsHide: true,
+  cwd: TEMP_DATA_DIR
 } as const;
 
 describe('Test cli', () => {
   const tempDir = join(TEMP_DIR, 'cli_test');
+  const zipDest = join(tempDir, 'archive.7z');
 
   beforeEach(() => {
     mkdirSync(tempDir, { recursive: true });
@@ -19,23 +23,29 @@ describe('Test cli', () => {
 
   // ! seven
   it('should print help', () => {
-    expect(() => execFileSync('node', ['dist/cli.js'], OPTIONS)).toThrow(
+    expect(() => execFileSync('node', [SEVEN], OPTIONS)).toThrow(
       'got 0, need at least 1'
     );
   });
 
   // ! seven zip
   it('should print zip help', () => {
-    expect(() => execFileSync('node', ['dist/cli.js'], OPTIONS)).toThrow(
+    expect(() => execFileSync('node', [SEVEN, 'zip'], OPTIONS)).toThrow(
       'got 0, need at least 1'
     );
   });
 
+  // * 7z a <tempDir>/archive.7z [cwd]
+  it('should create an archive from cwd', () => {
+    execFileSync('node', [SEVEN, 'zip', zipDest], OPTIONS);
+    expect(existsSync(zipDest)).toBe(true);
+  });
+
   // ! seven unzip
   it('should print unzip help', () => {
-    expect(() =>
-      execFileSync('node', ['dist/cli.js', 'unzip'], OPTIONS)
-    ).toThrow('got 0, need at least 1');
+    expect(() => execFileSync('node', [SEVEN, 'unzip'], OPTIONS)).toThrow(
+      'got 0, need at least 1'
+    );
   });
 
   afterEach(() => {
