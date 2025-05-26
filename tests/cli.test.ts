@@ -3,7 +3,7 @@ import { join } from 'path';
 import { existsSync, mkdirSync } from 'fs';
 import { rimrafSync } from 'rimraf';
 
-import { TEMP_DATA_DIR, TEMP_DIR } from './constants';
+import { TEMP_DATA_DIR, TEMP_DIR, TEST_ZIP } from './constants';
 
 const SEVEN = join(__dirname, '..', 'dist', 'cli.js');
 
@@ -77,6 +77,16 @@ describe('Test cli', () => {
     expect(() =>
       execFileSync('node', [SEVEN, 'unzip', 'test file 1.txt'], OPTIONS)
     ).toThrow('Cannot open the file as archive');
+  });
+
+  // * seven unzip <TEMP_DIR>/test zip.7z [cwd]
+  it('should extract archive to cwd', () => {
+    execFileSync('node', [SEVEN, 'unzip', TEST_ZIP], {
+      ...OPTIONS,
+      cwd: tempDir
+    });
+
+    expect(existsSync(join(tempDir, 'inner dir'))).toBe(true);
   });
 
   afterEach(() => {
