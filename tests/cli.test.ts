@@ -35,13 +35,13 @@ describe('Test cli', () => {
     );
   });
 
-  // * 7z a <tempDir>/archive.7z [cwd]
+  // * seven zip <tempDir>/archive.7z [cwd]
   it('should create an archive from cwd', () => {
     execFileSync('node', [SEVEN, 'zip', zipDest], OPTIONS);
     expect(existsSync(zipDest)).toBe(true);
   });
 
-  // ! 7z a <tempDir>/archive.7z <cwd>/no_file.txt
+  // ! seven zip <tempDir>/archive.7z <cwd>/no_file.txt
   it('should throw an error, because of missing file', () => {
     const errorMessage =
       process.platform === 'win32'
@@ -58,6 +58,18 @@ describe('Test cli', () => {
     expect(() => execFileSync('node', [SEVEN, 'unzip'], OPTIONS)).toThrow(
       'got 0, need at least 1'
     );
+  });
+
+  // ! seven unzip <cwd>/no_archive.7z [cwd]
+  it('should throw an error, because of missing archive', () => {
+    const errorMessage =
+      process.platform === 'win32'
+        ? 'The system cannot find the file specified'
+        : 'No such file or directory';
+
+    expect(() =>
+      execFileSync('node', [SEVEN, 'unzip', 'no_archive.7z'], OPTIONS)
+    ).toThrow(errorMessage);
   });
 
   afterEach(() => {
