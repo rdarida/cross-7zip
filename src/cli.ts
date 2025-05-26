@@ -43,7 +43,7 @@ yargs
     }
   )
   .command<ZipOptions>(
-    'zip <destination> <files...>',
+    'zip <destination> [files...]',
     texts.zip.description,
     yargs => {
       return yargs
