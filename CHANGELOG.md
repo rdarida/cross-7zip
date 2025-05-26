@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/rdarida/cross-7zip/compare/v1.3.2...v1.4.0) (2025-05-26)
+
+
+### Features
+
+* make files property optional for the cli ([7c0b310](https://github.com/rdarida/cross-7zip/commit/7c0b310ade60ed8420fcc886a4625889fba5b840))
+
+
+### Bug Fixes
+
+* remove default value for files cli parameter ([fd18daa](https://github.com/rdarida/cross-7zip/commit/fd18daa58750e59ab95a54c433dab5a09fcab649))
+
 ### [1.3.2](https://github.com/rdarida/cross-7zip/compare/v1.3.1...v1.3.2) (2025-05-25)
 
 
