@@ -79,6 +79,15 @@ const OPTIONS: ExecFileOptions = {
     );
   });
 
+  // ! 7z x <cwd>/not_an_archive [cwd]
+  it('should throw an error, because the input is not an archive', () => {
+    const notAnArchive = join(TEMP_DATA_DIR, 'test file 1.txt');
+
+    expect(() => execFileSync(SEVEN, ['x', notAnArchive], OPTIONS)).toThrow(
+      'Cannot open the file as archive'
+    );
+  });
+
   // * 7z x <TEMP_DIR>/test zip.7z [cwd]
   it('should extract archive to cwd', () => {
     execFileSync(SEVEN, ['x', TEST_ZIP], { ...OPTIONS, cwd: tempDir });
