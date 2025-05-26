@@ -56,8 +56,7 @@ yargs
         .positional('files', {
           describe: texts.zip.args.files,
           type: 'string',
-          array: true,
-          default: [process.cwd()]
+          array: true
         })
         .option('level', {
           alias: 'l',
