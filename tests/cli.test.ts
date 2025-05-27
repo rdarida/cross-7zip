@@ -3,7 +3,12 @@ import { join } from 'path';
 import { existsSync, mkdirSync } from 'fs';
 import { rimrafSync } from 'rimraf';
 
-import { TEMP_DATA_DIR, TEMP_DIR, TEST_ZIP } from './constants';
+import {
+  PASSWORD_TEST_ZIP,
+  TEMP_DATA_DIR,
+  TEMP_DIR,
+  TEST_ZIP
+} from './constants';
 
 const SEVEN = join(__dirname, '..', 'dist', 'cli.js');
 
@@ -94,6 +99,13 @@ describe('Test cli', () => {
   it('should extract archive to folder', () => {
     execFileSync('node', [SEVEN, 'unzip', TEST_ZIP, unzipDest], OPTIONS);
     expect(existsSync(unzipDest)).toBe(true);
+  });
+
+  // ! seven unzip <PASSWORD_TEST_ZIP> [cwd] -p
+  it('should throw an error, because of missing password', () => {
+    expect(() =>
+      execFileSync('node', [SEVEN, 'unzip', PASSWORD_TEST_ZIP], OPTIONS)
+    ).toThrow('Break signaled');
   });
 
   afterEach(() => {
