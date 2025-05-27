@@ -30,16 +30,12 @@ yargs
         });
     },
     args => {
-      try {
-        args = {
-          ...args,
-          destination: args.destination ?? process.cwd()
-        };
+      args = {
+        ...args,
+        destination: args.destination ?? process.cwd()
+      };
 
-        sevenUnzipSync(args);
-      } catch (e: any) {
-        console.error(e);
-      }
+      sevenUnzipSync(args);
     }
   )
   .command<ZipOptions>(
@@ -77,11 +73,7 @@ yargs
         });
     },
     args => {
-      try {
-        sevenZipSync(args);
-      } catch (e: any) {
-        console.error(e);
-      }
+      sevenZipSync(args);
     }
   )
   .help()

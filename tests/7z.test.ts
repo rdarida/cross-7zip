@@ -81,11 +81,9 @@ const OPTIONS: ExecFileOptions = {
 
   // ! 7z x <cwd>/not_an_archive [cwd]
   it('should throw an error, because the input is not an archive', () => {
-    const notAnArchive = join(TEMP_DATA_DIR, 'test file 1.txt');
-
-    expect(() => execFileSync(SEVEN, ['x', notAnArchive], OPTIONS)).toThrow(
-      'Cannot open the file as archive'
-    );
+    expect(() =>
+      execFileSync(SEVEN, ['x', 'test file 1.txt'], OPTIONS)
+    ).toThrow('Cannot open the file as archive');
   });
 
   // * 7z x <TEMP_DIR>/test zip.7z [cwd]
@@ -94,20 +92,20 @@ const OPTIONS: ExecFileOptions = {
     expect(existsSync(join(tempDir, 'inner dir'))).toBe(true);
   });
 
-  // * 7z x <TEMP_DIR>/test zip.7z <cwd>/folder
-  it('should extract archive to cwd', () => {
-    execFileSync(SEVEN, ['x', TEST_ZIP, unzipDest], OPTIONS);
-    expect(existsSync(unzipDest)).toBe(false);
+  // * 7z x <TEMP_DIR>/test zip.7z -o<tempDir>/folder
+  it('should extract archive to folder', () => {
+    execFileSync(SEVEN, ['x', TEST_ZIP, `-o${unzipDest}`], OPTIONS);
+    expect(existsSync(unzipDest)).toBe(true);
   });
 
-  // ! 7z x <PASSWORD_TEST_ZIP>
+  // ! 7z x <PASSWORD_TEST_ZIP> [cwd] -p
   it('should throw an error, because of missing password', () => {
     expect(() =>
       execFileSync(SEVEN, ['x', PASSWORD_TEST_ZIP], OPTIONS)
     ).toThrow('Break signaled');
   });
 
-  // ! 7z x <PASSWORD_TEST_ZIP> -pwrongPasswrod
+  // ! 7z x <PASSWORD_TEST_ZIP> [cwd] -pwrongPasswrod
   it('should throw an error, because of wrong password', () => {
     expect(() =>
       execFileSync(SEVEN, ['x', PASSWORD_TEST_ZIP, '-pwrongPassword'], OPTIONS)
