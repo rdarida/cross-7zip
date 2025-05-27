@@ -108,7 +108,7 @@ describe('Test cli', () => {
     ).toThrow('Break signaled');
   });
 
-  // ! seven unzip <PASSWORD_TEST_ZIP> [cwd] -pwrongPasswrod
+  // ! seven unzip <PASSWORD_TEST_ZIP> [cwd] -p=wrongPasswrod
   it('should throw an error, because of wrong password', () => {
     expect(() =>
       execFileSync(
@@ -117,6 +117,16 @@ describe('Test cli', () => {
         OPTIONS
       )
     ).toThrow('Cannot open encrypted archive. Wrong password?');
+  });
+
+  // * seven unzip <PASSWORD_TEST_ZIP> [cwd] -p=secure 123
+  it('should extract password protected archive to cwd', () => {
+    execFileSync('node', [SEVEN, 'unzip', PASSWORD_TEST_ZIP, '-p=secure 123'], {
+      ...OPTIONS,
+      cwd: tempDir
+    });
+
+    expect(existsSync(join(tempDir, 'inner dir'))).toBe(true);
   });
 
   afterEach(() => {
