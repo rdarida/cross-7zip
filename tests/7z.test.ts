@@ -92,10 +92,10 @@ const OPTIONS: ExecFileOptions = {
     expect(existsSync(join(tempDir, 'inner dir'))).toBe(true);
   });
 
-  // * 7z x <TEMP_DIR>/test zip.7z <cwd>/folder
-  it('should extract archive to cwd', () => {
-    execFileSync(SEVEN, ['x', TEST_ZIP, unzipDest], OPTIONS);
-    expect(existsSync(unzipDest)).toBe(false);
+  // * 7z x <TEMP_DIR>/test zip.7z -o<tempDir>/folder
+  it('should extract archive to folder', () => {
+    execFileSync(SEVEN, ['x', TEST_ZIP, `-o${unzipDest}`], OPTIONS);
+    expect(existsSync(unzipDest)).toBe(true);
   });
 
   // ! 7z x <PASSWORD_TEST_ZIP> [cwd] -p
