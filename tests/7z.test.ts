@@ -98,14 +98,14 @@ const OPTIONS: ExecFileOptions = {
     expect(existsSync(unzipDest)).toBe(false);
   });
 
-  // ! 7z x <PASSWORD_TEST_ZIP>
+  // ! 7z x <PASSWORD_TEST_ZIP> [cwd] -p
   it('should throw an error, because of missing password', () => {
     expect(() =>
       execFileSync(SEVEN, ['x', PASSWORD_TEST_ZIP], OPTIONS)
     ).toThrow('Break signaled');
   });
 
-  // ! 7z x <PASSWORD_TEST_ZIP> -pwrongPasswrod
+  // ! 7z x <PASSWORD_TEST_ZIP> [cwd] -pwrongPasswrod
   it('should throw an error, because of wrong password', () => {
     expect(() =>
       execFileSync(SEVEN, ['x', PASSWORD_TEST_ZIP, '-pwrongPassword'], OPTIONS)
