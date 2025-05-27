@@ -16,6 +16,7 @@ const OPTIONS: ExecFileOptions = {
 describe('Test cli', () => {
   const tempDir = join(TEMP_DIR, 'cli_test');
   const zipDest = join(tempDir, 'archive.7z');
+  const unzipDest = join(tempDir, 'folder');
 
   beforeEach(() => {
     mkdirSync(tempDir, { recursive: true });
@@ -87,6 +88,12 @@ describe('Test cli', () => {
     });
 
     expect(existsSync(join(tempDir, 'inner dir'))).toBe(true);
+  });
+
+  // * seven unzip <TEMP_DIR>/test zip.7z <tempDir>/folder
+  it('should extract archive to folder', () => {
+    execFileSync('node', [SEVEN, 'unzip', TEST_ZIP, unzipDest], OPTIONS);
+    expect(existsSync(unzipDest)).toBe(true);
   });
 
   afterEach(() => {
