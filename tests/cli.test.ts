@@ -108,6 +108,17 @@ describe('Test cli', () => {
     ).toThrow('Break signaled');
   });
 
+  // ! seven unzip <PASSWORD_TEST_ZIP> [cwd] -pwrongPasswrod
+  it('should throw an error, because of wrong password', () => {
+    expect(() =>
+      execFileSync(
+        'node',
+        [SEVEN, 'unzip', PASSWORD_TEST_ZIP, '-p=wrongPassword'],
+        OPTIONS
+      )
+    ).toThrow('Cannot open encrypted archive. Wrong password?');
+  });
+
   afterEach(() => {
     rimrafSync(tempDir);
   });
