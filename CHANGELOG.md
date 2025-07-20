@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.3](https://github.com/rdarida/cross-7zip/compare/v1.4.2...v1.4.3) (2025-07-20)
+
+
+### Bug Fixes
+
+* use sonarqube-scan-action@v5 ([656d968](https://github.com/rdarida/cross-7zip/commit/656d9685fb0af5c74a724c6f457f4663fab7eff0))
+
 ### [1.4.2](https://github.com/rdarida/cross-7zip/compare/v1.4.1...v1.4.2) (2025-05-26)
 
 ### [1.4.1](https://github.com/rdarida/cross-7zip/compare/v1.4.0...v1.4.1) (2025-05-26)
