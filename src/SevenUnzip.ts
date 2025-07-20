@@ -50,7 +50,7 @@ const DEFAULT_UNZIP_OPTIONS: UnzipOptions = {
  * [sevenZipUnzipSync.test.ts](https://github.com/rdarida/cross-7zip/blob/main/tests/sevenZipUnzipSync.test.ts).
  */
 export class SevenUnzip {
-  private _options: UnzipOptions;
+  private readonly _options: UnzipOptions;
 
   /**
    * Gets the path to the 7-Zip executable.
