@@ -55,7 +55,7 @@ const DEFAULT_ZIP_OPTIONS: ZipOptions = {
  * [sevenZipUnzipSync.test.ts](https://github.com/rdarida/cross-7zip/blob/main/tests/sevenZipUnzipSync.test.ts).
  */
 export class SevenZip {
-  private _options: ZipOptions;
+  private readonly _options: ZipOptions;
 
   /**
    * Gets the path to the 7-Zip executable.
@@ -98,7 +98,7 @@ export class SevenZip {
    * @param destination The output file path.
    * @returns The `SevenZip` instance for method chaining.
    */
-  public setDestination(destination: string): SevenZip {
+  public setDestination(destination: string): this {
     this._options.destination = destination;
     return this;
   }
@@ -109,7 +109,7 @@ export class SevenZip {
    * @param files An array of file or directory paths.
    * @returns The `SevenZip` instance for method chaining.
    */
-  public setFiles(files: string[]): SevenZip {
+  public setFiles(files: string[]): this {
     this._options.files = files;
     return this;
   }
@@ -120,7 +120,7 @@ export class SevenZip {
    * @param level Compression level, where 1 is the fastest and 9 is the best compression.
    * @returns The `SevenZip` instance for method chaining.
    */
-  public setLevel(level: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9): SevenZip {
+  public setLevel(level: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9): this {
     this._options.level = level;
     return this;
   }
@@ -130,7 +130,7 @@ export class SevenZip {
    *
    * @returns The `SevenZip` instance for method chaining.
    */
-  public setOverwrite(overwrite = true): SevenZip {
+  public setOverwrite(overwrite = true): this {
     this._options.overwrite = overwrite;
     return this;
   }
@@ -141,7 +141,7 @@ export class SevenZip {
    * @param password The encryption password.
    * @returns The `SevenZip` instance for method chaining.
    */
-  public setPassword(password: string): SevenZip {
+  public setPassword(password: string): this {
     this._options.password = password;
     return this;
   }
