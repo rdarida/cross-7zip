@@ -91,7 +91,7 @@ export class SevenUnzip {
    * @param archive The path to the archive file.
    * @returns The `SevenUnzip` instance for method chaining.
    */
-  public setArchive(archive: string): SevenUnzip {
+  public setArchive(archive: string): this {
     this._options.archive = archive;
     return this;
   }
@@ -102,7 +102,7 @@ export class SevenUnzip {
    * @param destination The path to the output folder.
    * @returns The `SevenUnzip` instance for method chaining.
    */
-  public setDestination(destination: string): SevenUnzip {
+  public setDestination(destination: string): this {
     this._options.destination = destination;
     return this;
   }
@@ -113,7 +113,7 @@ export class SevenUnzip {
    * @param password The password string.
    * @returns The `SevenUnzip` instance for method chaining.
    */
-  public setPassword(password: string): SevenUnzip {
+  public setPassword(password: string): this {
     this._options.password = password;
     return this;
   }
