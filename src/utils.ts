@@ -1,4 +1,9 @@
-import { ExecFileOptions, execFile, execFileSync } from 'child_process';
+import {
+  ExecFileOptions,
+  ExecFileSyncOptionsWithBufferEncoding,
+  execFile,
+  execFileSync
+} from 'child_process';
 
 import { EXEC_MAP } from './constants';
 
@@ -20,7 +25,7 @@ export async function execute(command: string, args: string[]): Promise<void> {
 }
 
 export function executeSync(command: string, args: string[]): void {
-  execFileSync(command, args, OPTIONS);
+  execFileSync(command, args, OPTIONS as ExecFileSyncOptionsWithBufferEncoding);
 }
 
 /**
