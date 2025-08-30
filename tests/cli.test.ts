@@ -1,4 +1,8 @@
-import { ExecFileOptions, execFileSync } from 'child_process';
+import {
+  execFileSync,
+  ExecFileSyncOptionsWithBufferEncoding
+} from 'child_process';
+
 import { join } from 'path';
 import { existsSync, mkdirSync } from 'fs';
 import { rimrafSync } from 'rimraf';
@@ -12,7 +16,7 @@ import {
 
 const SEVEN = join(__dirname, '..', 'dist', 'cli.js');
 
-const OPTIONS: ExecFileOptions = {
+const OPTIONS: ExecFileSyncOptionsWithBufferEncoding = {
   maxBuffer: Infinity,
   windowsHide: true,
   cwd: TEMP_DATA_DIR
