@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/rdarida/cross-7zip/compare/v1.4.6...v1.5.0) (2025-10-02)
+
+
+### Features
+
+* upgrade yargs to v18 ([4f9b3f2](https://github.com/rdarida/cross-7zip/commit/4f9b3f260540dc5f0160f5b4e9c73ee72338317e))
+
 ### [1.4.6](https://github.com/rdarida/cross-7zip/compare/v1.4.5...v1.4.6) (2025-08-30)
 
 ### [1.4.5](https://github.com/rdarida/cross-7zip/compare/v1.4.4...v1.4.5) (2025-07-20)
