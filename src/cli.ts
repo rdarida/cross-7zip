@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 
 import texts from './texts.json';
 import { UnzipOptions, ZipOptions, sevenUnzipSync, sevenZipSync } from '.';
 
-yargs
+yargs(hideBin(process.argv))
   .scriptName('seven')
   .usage('$0 <cmd> [args]', texts.description)
   .demandCommand(1, texts.demandMsg)

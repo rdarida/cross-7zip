@@ -1,6 +1,6 @@
 {
   "name": "cross-7zip",
-  "version": "1.4.6",
+  "version": "1.5.0",
   "description": "Cross-platform 7-Zip for Node.js",
   "keywords": [
     "7-Zip",
@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "rimraf": "^6.0.1",
-    "yargs": "^17.7.2"
+    "yargs": "^18.0.0"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
