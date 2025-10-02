@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "rimraf": "^6.0.1",
-    "yargs": "^17.7.2"
+    "yargs": "^18.0.0"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
