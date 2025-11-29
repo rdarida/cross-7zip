@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/rdarida/cross-7zip/compare/v1.5.0...v1.5.1) (2025-11-29)
+
+
+### Bug Fixes
+
+* solve Sonar issues ([4c8534a](https://github.com/rdarida/cross-7zip/commit/4c8534a4c3eb22aea3f3b21beba573cf11dd6eea))
+
 ## [1.5.0](https://github.com/rdarida/cross-7zip/compare/v1.4.6...v1.5.0) (2025-10-02)
 
 
