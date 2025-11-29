@@ -1,4 +1,4 @@
-import { join } from 'path';
+import { join } from 'node:path';
 
 const ZIP_DIR = join(__dirname, '..', '7zip');
 
