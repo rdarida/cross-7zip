@@ -3,7 +3,7 @@ import {
   ExecFileSyncOptionsWithBufferEncoding,
   execFile,
   execFileSync
-} from 'child_process';
+} from 'node:child_process';
 
 import { EXEC_MAP } from './constants';
 

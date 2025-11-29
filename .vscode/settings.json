@@ -24,5 +24,9 @@
     "package-lock.json": true,
     "sonar-project.properties": true,
     "typedoc.json": true
+  },
+  "sonarlint.connectedMode.project": {
+    "connectionId": "rdarida",
+    "projectKey": "rdarida_cross-7zip"
   }
 }
