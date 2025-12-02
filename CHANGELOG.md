@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.3](https://github.com/rdarida/cross-7zip/compare/v1.5.2...v1.5.3) (2025-12-02)
+
+### Bug Fixes
+
+* add host, owner, and repository to .release-it.json ([899e64b](https://github.com/rdarida/cross-7zip/commit/899e64b089098fab5410314fcad1d99b69f5ab1c))
+
 ## [1.5.2](https://github.com/rdarida/cross-7zip/compare/v1.5.1...v1.5.2) (2025-12-02)
 
 ### [1.5.1](https://github.com/rdarida/cross-7zip/compare/v1.5.0...v1.5.1) (2025-11-29)
