@@ -57,7 +57,7 @@
     "jest-config": "^30.0.5",
     "prettier": "^3.4.2",
     "release-it": "^19.2.4",
-    "ts-jest": "^29.2.5",
+    "ts-jest": "^29.4.6",
     "tsup": "^8.3.5",
     "typedoc": "^0.28.0",
     "typescript": "^5.7.2"
