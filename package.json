@@ -1,6 +1,6 @@
 {
   "name": "cross-7zip",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "description": "Cross-platform 7-Zip for Node.js",
   "keywords": [
     "7-Zip",
@@ -49,7 +49,7 @@
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "@release-it/conventional-changelog": "^10.0.2",
+    "@release-it/conventional-changelog": "^10.0.6",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.2",
     "@types/yargs": "^17.0.33",

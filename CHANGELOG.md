@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.8](https://github.com/rdarida/cross-7zip/compare/v1.5.7...v1.5.8) (2026-03-17)
+
+### Bug Fixes
+
+* upgrade undici package ([88827ad](https://github.com/rdarida/cross-7zip/commit/88827ad6e948edfa313cc0d86db8ac6b59625b81))
+
 ## [1.5.7](https://github.com/rdarida/cross-7zip/compare/v1.5.6...v1.5.7) (2026-03-12)
 
 ### Bug Fixes
