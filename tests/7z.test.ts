@@ -1,10 +1,11 @@
 import {
   execFileSync,
   ExecFileSyncOptionsWithBufferEncoding
-} from 'child_process';
+} from 'node:child_process';
 
-import { join } from 'path';
-import { existsSync, mkdirSync } from 'fs';
+import { existsSync, mkdirSync } from 'node:fs';
+import { join } from 'node:path';
+
 import { rimrafSync } from 'rimraf';
 
 import { getSevenZipPath } from '../src/utils';

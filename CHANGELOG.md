@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.5.12](https://github.com/rdarida/cross-7zip/compare/v1.5.11...v1.5.12) (2026-05-08)
+
 ## [1.5.11](https://github.com/rdarida/cross-7zip/compare/v1.5.10...v1.5.11) (2026-04-23)
 
 ## [1.5.10](https://github.com/rdarida/cross-7zip/compare/v1.5.8...v1.5.10) (2026-03-20)

@@ -5,6 +5,5 @@ docs
 tests/data
 
 package-lock.json
-tsconfig.json
 
 *.md
