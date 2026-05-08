@@ -1,5 +1,5 @@
-import { join } from 'path';
-import { readdirSync } from 'fs';
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
 
 export const DATA_DIR = join(__dirname, 'data');
 
