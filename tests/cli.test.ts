@@ -20,7 +20,8 @@ const SEVEN = join(__dirname, '..', 'dist', 'cli.js');
 const OPTIONS: ExecFileSyncOptionsWithBufferEncoding = {
   maxBuffer: Infinity,
   windowsHide: true,
-  cwd: TEMP_DATA_DIR
+  cwd: TEMP_DATA_DIR,
+  stdio: 'pipe'
 } as const;
 
 describe('Test cli', () => {

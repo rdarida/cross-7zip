@@ -22,7 +22,8 @@ const SEVEN = getSevenZipPath() || '';
 const OPTIONS: ExecFileSyncOptionsWithBufferEncoding = {
   maxBuffer: Infinity,
   windowsHide: true,
-  cwd: TEMP_DATA_DIR
+  cwd: TEMP_DATA_DIR,
+  stdio: 'pipe'
 } as const;
 
 (SEVEN ? describe : xdescribe)('Test 7z executable', () => {
