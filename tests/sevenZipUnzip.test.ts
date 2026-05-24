@@ -26,7 +26,12 @@ describe('Test sevenZip and sevenUnzip functions', () => {
     const destination = join(tempDir, 'test zip.7z');
 
     for (const testFile of TEST_FILES) {
-      await sevenZip({ destination, files: [testFile], level: 1 });
+      await sevenZip({
+        destination,
+        files: [testFile],
+        level: 1,
+        password: TEST_PASSWORD
+      });
     }
 
     expect(existsSync(destination)).toBeTruthy();
@@ -50,22 +55,12 @@ describe('Test sevenZip and sevenUnzip functions', () => {
   });
 
   it('extracts files from a 7z archive', async () => {
-    const destination = join(tempDir, 'test zip password.7z');
-    const password = TEST_PASSWORD;
-
-    const sevenZip = new SevenZip()
-      .setDestination(destination)
-      .setFiles(TEST_FILES)
-      .setLevel(5)
-      .setPassword(password)
-      .setOverwrite();
-
-    await sevenZip.run();
+    const archive = join(tempDir, 'test zip.7z');
 
     await sevenUnzip({
-      archive: destination,
+      archive,
       destination: tempDir,
-      password
+      password: TEST_PASSWORD
     });
 
     [
@@ -92,7 +87,7 @@ describe('Test sevenZip and sevenUnzip functions', () => {
       .setDestination('example.7z')
       .setFiles(['file 1.txt', 'file 2.md'])
       .setLevel(5)
-      .setPassword('secure 123')
+      .setPassword('123 password')
       .setOverwrite()
       .toString();
 
@@ -103,7 +98,7 @@ describe('Test sevenZip and sevenUnzip functions', () => {
       '"file 1.txt"',
       '"file 2.md"',
       '"-mx5"',
-      '"-psecure 123"',
+      '"-p123 password"',
       '"-mhe=on"'
     ].join(' ');
 
