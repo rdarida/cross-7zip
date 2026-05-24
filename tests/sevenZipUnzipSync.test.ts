@@ -87,7 +87,7 @@ describe('Test sevenZipSync and sevenUnzipSync functions', () => {
     const actual = new SevenUnzip()
       .setArchive('example.7z')
       .setDestination('outputFolder')
-      .setPassword('secure 123')
+      .setPassword('123 password')
       .toString();
 
     const expected = [
@@ -95,7 +95,7 @@ describe('Test sevenZipSync and sevenUnzipSync functions', () => {
       '"x"',
       '"example.7z"',
       '"-ooutputFolder"',
-      '"-psecure 123"'
+      '"-p123 password"'
     ].join(' ');
 
     expect(actual).toBe(expected);

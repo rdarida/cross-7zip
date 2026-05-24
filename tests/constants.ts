@@ -15,4 +15,4 @@ export const TEST_ZIP = join(TEMP_DIR, 'test zip.7z');
 export const OVERWRITE_TEST_ZIP = join(TEMP_DIR, 'overwrite test zip.7z');
 export const PASSWORD_TEST_ZIP = join(TEMP_DIR, 'password test zip.7z');
 
-export const TEST_PASSWORD = 'secure 123';
+export const TEST_PASSWORD = 'secure 123 x';

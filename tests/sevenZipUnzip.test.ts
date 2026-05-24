@@ -87,7 +87,7 @@ describe('Test sevenZip and sevenUnzip functions', () => {
       .setDestination('example.7z')
       .setFiles(['file 1.txt', 'file 2.md'])
       .setLevel(5)
-      .setPassword('secure 123')
+      .setPassword('123 password')
       .setOverwrite()
       .toString();
 
@@ -98,7 +98,7 @@ describe('Test sevenZip and sevenUnzip functions', () => {
       '"file 1.txt"',
       '"file 2.md"',
       '"-mx5"',
-      '"-psecure 123"',
+      '"-p123 password"',
       '"-mhe=on"'
     ].join(' ');
 

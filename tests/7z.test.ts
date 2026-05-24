@@ -14,6 +14,7 @@ import {
   PASSWORD_TEST_ZIP,
   TEMP_DATA_DIR,
   TEMP_DIR,
+  TEST_PASSWORD,
   TEST_ZIP
 } from './constants';
 
@@ -120,7 +121,7 @@ const OPTIONS: ExecFileSyncOptionsWithBufferEncoding = {
 
   // * 7z x <PASSWORD_TEST_ZIP> [cwd] -p"secure 123"
   it('should extract password protected archive to cwd', () => {
-    execFileSync(SEVEN, ['x', PASSWORD_TEST_ZIP, '-psecure 123'], {
+    execFileSync(SEVEN, ['x', PASSWORD_TEST_ZIP, `-p${TEST_PASSWORD}`], {
       ...OPTIONS,
       cwd: tempDir
     });

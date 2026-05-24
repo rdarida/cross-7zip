@@ -12,6 +12,7 @@ import {
   PASSWORD_TEST_ZIP,
   TEMP_DATA_DIR,
   TEMP_DIR,
+  TEST_PASSWORD,
   TEST_ZIP
 } from './constants';
 
@@ -127,10 +128,14 @@ describe('Test cli', () => {
 
   // * seven unzip <PASSWORD_TEST_ZIP> [cwd] -p=secure 123
   it('should extract password protected archive to cwd', () => {
-    execFileSync('node', [SEVEN, 'unzip', PASSWORD_TEST_ZIP, '-p=secure 123'], {
-      ...OPTIONS,
-      cwd: tempDir
-    });
+    execFileSync(
+      'node',
+      [SEVEN, 'unzip', PASSWORD_TEST_ZIP, `-p=${TEST_PASSWORD}`],
+      {
+        ...OPTIONS,
+        cwd: tempDir
+      }
+    );
 
     expect(existsSync(join(tempDir, 'inner dir'))).toBe(true);
   });
