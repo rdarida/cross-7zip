@@ -26,7 +26,12 @@ describe('Test sevenZipSync and sevenUnzipSync functions', () => {
     const destination = join(tempDir, 'test zip.7z');
 
     for (const testFile of TEST_FILES) {
-      sevenZipSync({ destination, files: [testFile], level: 1 });
+      sevenZipSync({
+        destination,
+        files: [testFile],
+        level: 1,
+        password: TEST_PASSWORD
+      });
     }
 
     expect(existsSync(destination)).toBeTruthy();
@@ -50,15 +55,12 @@ describe('Test sevenZipSync and sevenUnzipSync functions', () => {
   });
 
   it('extracts files from a 7z archive', () => {
-    const destination = join(tempDir, 'test zip password.7z');
-    const password = TEST_PASSWORD;
-
-    sevenZipSync({ destination, files: TEST_FILES, password });
+    const archive = join(tempDir, 'test zip.7z');
 
     const sevenUnzip = new SevenUnzip()
-      .setArchive(destination)
+      .setArchive(archive)
       .setDestination(tempDir)
-      .setPassword(password);
+      .setPassword(TEST_PASSWORD);
 
     sevenUnzip.runSync();
 
