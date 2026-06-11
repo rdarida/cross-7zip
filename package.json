@@ -1,6 +1,6 @@
 {
   "name": "cross-7zip",
-  "version": "1.5.17",
+  "version": "1.5.18",
   "description": "Cross-platform 7-Zip for Node.js",
   "keywords": [
     "7-Zip",
@@ -60,6 +60,6 @@
     "ts-jest": "^29.4.6",
     "tsup": "^8.5.1",
     "typedoc": "^0.28.0",
-    "typescript": "^5.7.2"
+    "typescript": "^6.0.3"
   }
 }
