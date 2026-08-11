@@ -39,7 +39,7 @@ jobs:
       - name: Test
         run: |
           npm run build
-          npm test -- --collectCoverage
+          npm test -- --coverage
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995
@@ -50,7 +50,7 @@ jobs:
         run: npm run docs
 
       - name: Move coverage into docs
-        run: mv coverage/lcov-report docs/coverage
+        run: mv coverage docs/coverage
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

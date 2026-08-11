@@ -7,6 +7,7 @@ import { existsSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { rimrafSync } from 'rimraf';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import {
   PASSWORD_TEST_ZIP,

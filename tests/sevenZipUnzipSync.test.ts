@@ -3,6 +3,16 @@ import { join } from 'node:path';
 
 import { rimrafSync } from 'rimraf';
 
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  it,
+  vi
+} from 'vitest';
+
 import * as utils from '../src/utils';
 import { SevenUnzip } from '../src/SevenUnzip';
 import { sevenZipSync, sevenUnzipSync } from '../src/sevenZipUnzipSync';
@@ -102,7 +112,7 @@ describe('Test sevenZipSync and sevenUnzipSync functions', () => {
   });
 
   it('throws an error if 7-Zip executable is not found', async () => {
-    jest.spyOn(utils, 'getSevenZipPath').mockReturnValue(undefined);
+    vi.spyOn(utils, 'getSevenZipPath').mockReturnValue(undefined);
 
     expect(() => sevenZipSync({ destination: '', files: [] })).toThrow(
       '7-Zip executable not found.'
@@ -114,7 +124,7 @@ describe('Test sevenZipSync and sevenUnzipSync functions', () => {
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   afterAll(() => {

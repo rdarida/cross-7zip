@@ -1,6 +1,6 @@
-const { join } = require('path');
-const { readdirSync } = require('fs');
-const { execSync } = require('child_process');
+const { execSync } = require('node:child_process');
+const { readdirSync } = require('node:fs');
+const { join } = require('node:path');
 
 (() => {
   const { platform } = process;
