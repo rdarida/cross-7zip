@@ -16,7 +16,7 @@ import {
   TEST_ZIP
 } from './constants';
 
-export default function globalSetup(): void {
+export function setup(): void {
   const seven = getSevenZipPath();
 
   if (!seven) return;
@@ -46,4 +46,8 @@ export default function globalSetup(): void {
       cwd: DATA_DIR
     }
   );
+}
+
+export function teardown(): void {
+  rimrafSync(TEMP_DIR);
 }

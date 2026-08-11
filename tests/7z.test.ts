@@ -7,6 +7,7 @@ import { existsSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { rimrafSync } from 'rimraf';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import { getSevenZipPath } from '../src/utils';
 
@@ -27,7 +28,7 @@ const OPTIONS: ExecFileSyncOptionsWithBufferEncoding = {
   stdio: 'pipe'
 } as const;
 
-(SEVEN ? describe : xdescribe)('Test 7z executable', () => {
+(SEVEN ? describe : describe.skip)('Test 7z executable', () => {
   const tempDir = join(TEMP_DIR, '7z_test');
   const zipDest = join(tempDir, 'archive.7z');
   const unzipDest = join(tempDir, 'folder');
