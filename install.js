@@ -19,7 +19,8 @@ const { join } = require('node:path');
     for (const executable of executables) {
       execSync(`chmod +x "${executable}"`);
     }
-  } catch (error) {
+  }
+  catch (error) {
     console.error(error);
   }
 })();
