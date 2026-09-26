@@ -1,13 +1,13 @@
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-export const DATA_DIR = join(__dirname, 'data');
+export const FIXTURES_DIR = join(__dirname, '__fixtures__');
 
 export const TEMP_DIR = join(__dirname, '.temp');
 
 export const TEMP_DATA_DIR = join(TEMP_DIR, 'data');
 
-export const TEST_FILES = readdirSync(DATA_DIR).map(fileName =>
+export const TEST_FILES = readdirSync(FIXTURES_DIR).map(fileName =>
   join(TEMP_DATA_DIR, fileName)
 );
 
