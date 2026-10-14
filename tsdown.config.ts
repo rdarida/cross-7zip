@@ -1,11 +1,12 @@
-import { defineConfig } from 'tsup';
+import { defineConfig } from 'tsdown';
 
 export default defineConfig({
   entry: ['./src/index.ts', './src/cli.ts'],
-  format: ['cjs'],
+  format: 'cjs',
   clean: true,
   dts: true,
   shims: true,
   sourcemap: true,
-  minify: true
+  minify: true,
+  fixedExtension: false
 });
