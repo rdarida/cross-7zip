@@ -17,7 +17,7 @@ import {
   TEST_ZIP
 } from './constants';
 
-const SEVEN = join(__dirname, '..', 'dist', 'cli.js');
+const SEVEN = join(__dirname, '..', 'dist', 'cli.cjs');
 
 const OPTIONS: ExecFileSyncOptionsWithBufferEncoding = {
   maxBuffer: Infinity,
